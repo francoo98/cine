@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="proyeccion">
+            <h2><span jhiTranslate="cineApp.proyeccion.detail.title">Proyeccion</span> {{ proyeccion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cineApp.proyeccion.fechaInicio">Fecha Inicio</span></dt>
+                <dd>
+                    <span>{{ proyeccion.fechaInicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.fechaFin">Fecha Fin</span></dt>
+                <dd>
+                    <span>{{ proyeccion.fechaFin }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.hora">Hora</span></dt>
+                <dd>
+                    <span>{{ proyeccion.hora }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ proyeccion.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></dt>
+                <dd>
+                    <div *ngIf="proyeccion.sala">
+                        <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']">{{ proyeccion.sala?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.pelicula">Pelicula</span></dt>
+                <dd>
+                    <div *ngIf="proyeccion.pelicula">
+                        <a [routerLink]="['/pelicula', proyeccion.pelicula?.id, 'view']">{{ proyeccion.pelicula?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/proyeccion', proyeccion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

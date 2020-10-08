@@ -1,0 +1,25 @@
+{
+  "cineApp": {
+    "butaca": {
+      "home": {
+        "title": "Butacas",
+        "createLabel": "Créer un nouveau Butaca",
+        "createOrEditLabel": "Créer ou éditer un Butaca",
+        "notFound": "Aucun Butaca trouvé"
+      },
+      "created": "Un nouveau Butaca a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Butaca avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Butaca avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Butaca {{ id }} ?"
+      },
+      "detail": {
+        "title": "Butaca"
+      },
+      "fechaDeVenta": "Fecha De Venta",
+      "fila": "Fila",
+      "asiento": "Asiento",
+      "proyeccion": "Proyeccion"
+    }
+  }
+}

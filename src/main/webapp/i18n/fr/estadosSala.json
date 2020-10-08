@@ -1,0 +1,10 @@
+{
+  "cineApp": {
+    "EstadosSala": {
+      "null": "",
+      "Habilitada": "Habilitada",
+      "Deshabilitada": "Deshabilitada",
+      "Eliminada": "Eliminada"
+    }
+  }
+}

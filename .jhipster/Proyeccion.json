@@ -1,0 +1,49 @@
+{
+  "name": "Proyeccion",
+  "fields": [
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "hora",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "proyeccion",
+      "relationshipName": "sala",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pelicula",
+      "otherEntityRelationshipName": "proyeccion",
+      "relationshipName": "pelicula",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201008182859",
+  "entityTableName": "proyeccion",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cine"]
+}

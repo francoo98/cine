@@ -1,0 +1,37 @@
+{
+  "name": "Butaca",
+  "fields": [
+    {
+      "fieldName": "fechaDeVenta",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "fila",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "asiento",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "proyeccion",
+      "otherEntityRelationshipName": "butaca",
+      "relationshipName": "proyeccion",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201008183059",
+  "entityTableName": "butaca",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cine"]
+}

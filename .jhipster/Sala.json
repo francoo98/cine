@@ -1,0 +1,34 @@
+{
+  "name": "Sala",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadosSala",
+      "fieldValues": "Habilitada,Deshabilitada,Eliminada"
+    },
+    {
+      "fieldName": "filas",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "asientos",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201008182959",
+  "entityTableName": "sala",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cine"]
+}

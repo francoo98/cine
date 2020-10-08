@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="cineApp.proyeccion.home.title">Proyeccions</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-proyeccion" [routerLink]="['/proyeccion/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="cineApp.proyeccion.home.createLabel">
+            Create a new Proyeccion
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="proyeccions?.length === 0">
+        <span jhiTranslate="cineApp.proyeccion.home.notFound">No proyeccions found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="proyeccions && proyeccions.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.fechaInicio">Fecha Inicio</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.fechaFin">Fecha Fin</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.hora">Hora</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.estado">Estado</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.pelicula">Pelicula</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let proyeccion of proyeccions ;trackBy: trackId">
+                    <td><a [routerLink]="['/proyeccion', proyeccion.id, 'view']">{{ proyeccion.id }}</a></td>
+                    <td>{{ proyeccion.fechaInicio | date:'mediumDate' }}</td>
+                    <td>{{ proyeccion.fechaFin | date:'mediumDate' }}</td>
+                    <td>{{ proyeccion.hora | date:'medium' }}</td>
+                    <td>{{ proyeccion.estado }}</td>
+                    <td>
+                        <div *ngIf="proyeccion.sala">
+                            <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']" >{{ proyeccion.sala?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="proyeccion.pelicula">
+                            <a [routerLink]="['/pelicula', proyeccion.pelicula?.id, 'view']" >{{ proyeccion.pelicula?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/proyeccion', proyeccion.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/proyeccion', proyeccion.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(proyeccion)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

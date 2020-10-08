@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pelicula">
+            <h2><span jhiTranslate="cineApp.pelicula.detail.title">Pelicula</span> {{ pelicula.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="cineApp.pelicula.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ pelicula.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.descriptcion">Descriptcion</span></dt>
+                <dd>
+                    <span>{{ pelicula.descriptcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.detalle">Detalle</span></dt>
+                <dd>
+                    <span>{{ pelicula.detalle }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.duracion">Duracion</span></dt>
+                <dd>
+                    <span>{{ pelicula.duracion }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.genero">Genero</span></dt>
+                <dd>
+                    <span>{{ pelicula.genero }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.clasificacion">Clasificacion</span></dt>
+                <dd>
+                    <span>{{ pelicula.clasificacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ pelicula.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.fechaInicio">Fecha Inicio</span></dt>
+                <dd>
+                    <span>{{ pelicula.fechaInicio }}</span>
+                </dd>
+                <dt><span jhiTranslate="cineApp.pelicula.fechaFin">Fecha Fin</span></dt>
+                <dd>
+                    <span>{{ pelicula.fechaFin }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pelicula', pelicula.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

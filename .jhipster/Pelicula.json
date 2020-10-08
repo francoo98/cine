@@ -1,0 +1,56 @@
+{
+  "name": "Pelicula",
+  "fields": [
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "descriptcion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detalle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "duracion",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMin": "0",
+      "fieldValidateRulesMax": "400"
+    },
+    {
+      "fieldName": "genero",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "clasificacion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "fechaInicio",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "fechaFin",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201008182759",
+  "entityTableName": "pelicula",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["cine"]
+}
