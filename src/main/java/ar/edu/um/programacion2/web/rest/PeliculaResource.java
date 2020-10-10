@@ -2,6 +2,7 @@ package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
+import ar.edu.um.programacion2.service.PeliculaService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,6 +10,9 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 /**
@@ -35,9 +41,11 @@ public class PeliculaResource {
     private String applicationName;
 
     private final PeliculaRepository peliculaRepository;
+    private final PeliculaService peliculaService;
 
-    public PeliculaResource(PeliculaRepository peliculaRepository) {
+    public PeliculaResource(PeliculaRepository peliculaRepository, PeliculaService peliculaService) {
         this.peliculaRepository = peliculaRepository;
+        this.peliculaService = peliculaService;
     }
 
     /**
@@ -89,6 +97,26 @@ public class PeliculaResource {
     public List<Pelicula> getAllPeliculas() {
         log.debug("REST request to get all Peliculas");
         return peliculaRepository.findAll();
+    }
+    
+    @GetMapping("/peliculas/{inicio}/{fin}")
+    public List<Pelicula> getAllPeliculasBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
+        log.debug("REST request to get all Peliculas between : {} - {}", inicio,  fin);
+        return peliculaRepository.findAllBetween(inicio, fin);
+    }
+    
+    @GetMapping("/peliculas/{id}/{inicio}/{fin}")
+    public ResponseEntity<String> getPeliculaAvailabilityBetween(@PathVariable Long id, @PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
+    	log.debug("REST request to get Pelicula availability in : {} - {}", inicio, fin);
+    	try {
+    		return new ResponseEntity<String>(peliculaService.findPeliculaAvailabilityBetween(id, inicio, fin), HttpStatus.OK);
+    	}
+    	catch (NoSuchElementException NoSuchElement) {
+    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    	catch (JSONException JSON) {
+    		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    	}
     }
 
     /**
