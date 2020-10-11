@@ -3,6 +3,7 @@ package ar.edu.um.programacion2.web.rest;
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
+import ar.edu.um.programacion2.service.ProyeccionService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,9 +37,11 @@ public class ProyeccionResource {
     private String applicationName;
 
     private final ProyeccionRepository proyeccionRepository;
-
-    public ProyeccionResource(ProyeccionRepository proyeccionRepository) {
+    private final ProyeccionService proyeccionService;
+    
+    public ProyeccionResource(ProyeccionRepository proyeccionRepository, ProyeccionService proyeccionService) {
         this.proyeccionRepository = proyeccionRepository;
+        this.proyeccionService = proyeccionService;
     }
 
     /**
@@ -91,8 +95,19 @@ public class ProyeccionResource {
         return proyeccionRepository.findAll();
     }
     
+    @GetMapping("/proyeccions/activas")
+    public List<Proyeccion> getAllProyeccionsActivas() {
+    	log.debug("REST request to get all Proyeccions activas");
+        return proyeccionRepository.findAllByEstadoTrue();
+    }
+    
+    @GetMapping("/proyeccions/{inicio}/{fin}")
+    public List<Proyeccion> getAllProyeccionsBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
+    	return proyeccionService.getAllProyeccionsBetween(inicio, fin);
+    }
     @GetMapping("/proyeccions/pelicula/{id}")
     public List<Proyeccion> getProyeccionesDePelicula(@PathVariable Long id) {
+    	log.debug("REST request to get all Proyeccions of pelicula : {}", id);
     	return proyeccionRepository.findProyeccionsByPeliculaId(id);
     }
     /**
