@@ -18,7 +18,5 @@ public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
 	@Query(value = "SELECT p FROM Pelicula p "
 				 + "WHERE (?1 < p.fechaFin AND ?2 > p.fechaInicio AND (p.estado = true))")
 	List<Pelicula> findAllBetween(LocalDate inicio, LocalDate fin);
-
-	//ResponseEntity<Pelicula> findPeliculaAvailabilityBetween(LocalDate inicio, LocalDate fin);
 	
 }

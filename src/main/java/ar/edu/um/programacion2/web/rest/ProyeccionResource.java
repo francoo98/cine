@@ -1,5 +1,6 @@
 package ar.edu.um.programacion2.web.rest;
 
+import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
@@ -89,7 +90,11 @@ public class ProyeccionResource {
         log.debug("REST request to get all Proyeccions");
         return proyeccionRepository.findAll();
     }
-
+    
+    @GetMapping("/proyeccions/pelicula/{id}")
+    public List<Proyeccion> getProyeccionesDePelicula(@PathVariable Long id) {
+    	return proyeccionRepository.findProyeccionsByPeliculaId(id);
+    }
     /**
      * {@code GET  /proyeccions/:id} : get the "id" proyeccion.
      *
