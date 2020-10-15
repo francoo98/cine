@@ -1,5 +1,7 @@
 package ar.edu.um.programacion2.web.rest;
 
+import ar.edu.um.programacion2.domain.Butaca;
+import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.service.AuditEventService;
 
 import io.github.jhipster.web.util.PaginationUtil;
@@ -77,3 +79,15 @@ public class AuditResource {
         return ResponseUtil.wrapOrNotFound(auditEventService.find(id));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

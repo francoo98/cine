@@ -1,9 +1,7 @@
 package ar.edu.um.programacion2.web.rest;
 
-import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
-import ar.edu.um.programacion2.service.ProyeccionService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -37,11 +35,9 @@ public class ProyeccionResource {
     private String applicationName;
 
     private final ProyeccionRepository proyeccionRepository;
-    private final ProyeccionService proyeccionService;
     
-    public ProyeccionResource(ProyeccionRepository proyeccionRepository, ProyeccionService proyeccionService) {
+    public ProyeccionResource(ProyeccionRepository proyeccionRepository) {
         this.proyeccionRepository = proyeccionRepository;
-        this.proyeccionService = proyeccionService;
     }
 
     /**
@@ -95,21 +91,24 @@ public class ProyeccionResource {
         return proyeccionRepository.findAll();
     }
     
-    @GetMapping("/proyeccions/activas")
-    public List<Proyeccion> getAllProyeccionsActivas() {
+    @GetMapping("/proyeccions/hoy") // 1
+    public List<Proyeccion> getAllProyeccionsActivasHoy() {
     	log.debug("REST request to get all Proyeccions activas");
         return proyeccionRepository.findAllByEstadoTrue();
     }
     
-    @GetMapping("/proyeccions/{inicio}/{fin}")
+    @GetMapping("/proyeccions/{inicio}/{fin}") // 2
     public List<Proyeccion> getAllProyeccionsBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
-    	return proyeccionService.getAllProyeccionsBetween(inicio, fin);
+    	log.debug("REST request to get all Proyeccions between : {} and {}", inicio, fin);
+    	return proyeccionRepository.findProyeccionsByFechaFinGreaterThanEqualAndFechaInicioLessThanEqualAndEstadoTrue(inicio, fin);
     }
+    
     @GetMapping("/proyeccions/pelicula/{id}")
     public List<Proyeccion> getProyeccionesDePelicula(@PathVariable Long id) {
     	log.debug("REST request to get all Proyeccions of pelicula : {}", id);
     	return proyeccionRepository.findProyeccionsByPeliculaId(id);
     }
+
     /**
      * {@code GET  /proyeccions/:id} : get the "id" proyeccion.
      *
