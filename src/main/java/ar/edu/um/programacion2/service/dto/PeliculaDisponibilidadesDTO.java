@@ -1,4 +1,4 @@
-package ar.edu.um.programacion2.domain.dto;
+package ar.edu.um.programacion2.service.dto;
 
 import java.time.LocalDate;
 import java.util.List;

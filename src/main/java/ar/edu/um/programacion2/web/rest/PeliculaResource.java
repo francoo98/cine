@@ -1,9 +1,9 @@
 package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Pelicula;
-import ar.edu.um.programacion2.domain.dto.PeliculaDisponibilidadesDTO;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.service.PeliculaService;
+import ar.edu.um.programacion2.service.dto.PeliculaDisponibilidadesDTO;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;

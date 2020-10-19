@@ -3,9 +3,11 @@ package ar.edu.um.programacion2.repository;
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 
+import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -30,8 +32,9 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 	@Query("select p, count(b) as cantidad "
 		 + "from Butaca b "
 		 + "join Proyeccion p on b.proyeccion = p "
+		 + "where p.fechaInicio < ?2 and p.fechaFin > ?1 "
 		 + "group by b.proyeccion "
 		 + "order by cantidad desc")
-	List<Proyeccion> asd(LocalDate inicio, LocalDate fin);
+	Page<Proyeccion> masVendidas(LocalDate inicio, LocalDate fin, Pageable pageable);
 	
 }

@@ -10,8 +10,8 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import ar.edu.um.programacion2.domain.Pelicula;
-import ar.edu.um.programacion2.domain.dto.PeliculaDisponibilidadesDTO;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
+import ar.edu.um.programacion2.service.dto.PeliculaDisponibilidadesDTO;
 
 @Service
 public class PeliculaService {

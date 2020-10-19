@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface ButacaRepository extends JpaRepository<Butaca, Long> {
+	Integer countByProyeccionId(Long id);
 }
