@@ -6,13 +6,14 @@ import ar.edu.um.programacion2.domain.Proyeccion;
 public class ProyeccionButacasVendidasDTO {
 	private Proyeccion proyeccion;
 	private int butacasVendidas;
-	
+
 	public ProyeccionButacasVendidasDTO(Proyeccion proyeccion, int butacasVendidas) {
 		this.proyeccion = proyeccion;
 		this.butacasVendidas = butacasVendidas;
 	}
-	
-	public ProyeccionButacasVendidasDTO() { }
+
+	public ProyeccionButacasVendidasDTO() {
+	}
 
 	public Proyeccion getProyeccion() {
 		return proyeccion;

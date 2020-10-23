@@ -15,41 +15,24 @@ import ar.edu.um.programacion2.service.dto.PeliculaDisponibilidadesDTO;
 
 @Service
 public class PeliculaService {
-	
+
 	private final PeliculaRepository peliculaRespository;
-	
+
 	public PeliculaService(PeliculaRepository peliculaRepository) {
 		this.peliculaRespository = peliculaRepository;
 	}
-	
+
 	public PeliculaDisponibilidadesDTO findPeliculaAvailabilityBetween(Long id, LocalDate inicio, LocalDate fin)
-	throws NoSuchElementException 
-	{
+			throws NoSuchElementException {
 		Pelicula pelicula = peliculaRespository.findById(id).orElseThrow();
 		Stream<LocalDate> fechasDisponibles = inicio.datesUntil(fin.plusDays(1));
-		//List<LocalDate> fechas = secuenciaDeFechas.collect(Collectors.toList());
+		// List<LocalDate> fechas = secuenciaDeFechas.collect(Collectors.toList());
 		List<LocalDate> fechas = fechasDisponibles.filter(new Predicate<LocalDate>() {
 			@Override
 			public boolean test(LocalDate t) {
-				return t.isBefore(pelicula.getFechaFin()) && t.isAfter(pelicula.getFechaInicio()); 
+				return t.isBefore(pelicula.getFechaFin()) && t.isAfter(pelicula.getFechaInicio());
 			}
 		}).collect(Collectors.toList());
 		return new PeliculaDisponibilidadesDTO(pelicula, fechas);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
