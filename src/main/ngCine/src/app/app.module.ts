@@ -6,11 +6,12 @@ import { PeliculasModule } from './peliculas/peliculas.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './authService';
 import { httpInterceptorProviders } from './interceptores/index';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, PeliculasModule],
   providers: [AuthService, httpInterceptorProviders],
   bootstrap: [AppComponent],
+  imports: [BrowserModule, HttpClientModule, PeliculasModule, AppRoutingModule],
 })
 export class AppModule {}

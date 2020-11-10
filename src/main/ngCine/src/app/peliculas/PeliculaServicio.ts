@@ -9,6 +9,10 @@ import { Pelicula } from '../entidades/Pelicula/Pelicula';
 export class PeliculaServicio {
   constructor(private http: HttpClient) {}
 
+  getPelicula(id: number): Observable<Pelicula> {
+    return this.http.get<Pelicula>('http://localhost:8080/api/peliculas/' + id);
+  }
+
   public getPeliculas(): Observable<Pelicula[]> {
     return this.http.get<Pelicula[]>('http://localhost:8080/api/peliculas');
   }
