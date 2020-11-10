@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './authService';
 import { httpInterceptorProviders } from './interceptores/index';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { ProyeccionesModule } from './proyecciones/proyecciones.module';
 
 @NgModule({
   declarations: [AppComponent],

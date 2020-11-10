@@ -8,6 +8,7 @@ import { PeliculaComponent } from './pelicula/pelicula.component';
 import { AppRoutingModule } from '../app-routing/app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { peliculasRoutingModule } from './peliculas-routing.module';
+import { ProyeccionesModule } from '../proyecciones/proyecciones.module';
 
 const rutas: Routes = [
   { path: 'peliculas', component: ListaDePeliculasComponent },
@@ -16,7 +17,7 @@ const rutas: Routes = [
 
 @NgModule({
   declarations: [ListaDePeliculasComponent, PeliculaComponent],
-  imports: [CommonModule, HttpClientModule, AppRoutingModule, RouterModule.forChild(rutas)],
+  imports: [CommonModule, HttpClientModule, AppRoutingModule, ProyeccionesModule, RouterModule.forChild(rutas)],
   exports: [ListaDePeliculasComponent],
   providers: [PeliculaServicio, AuthInterceptor],
 })
