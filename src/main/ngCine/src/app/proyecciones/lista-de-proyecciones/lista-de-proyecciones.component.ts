@@ -19,13 +19,10 @@ export class ListaDeProyeccionesComponent implements OnInit {
   }
 
   getProyecciones(): void {
-    //this.ruta.paramMap.subscribe(mapa => (this.peliculaId = +mapa.get('id')));
     this.ruta.paramMap.subscribe({
       next: mapa => {
         this.servicio.getProyecciones(+mapa.get('id')).subscribe(proyecciones => (this.proyecciones = proyecciones));
       },
     });
-
-    //this.servicio.getProyecciones(this.peliculaId).subscribe(proyecciones => (this.proyecciones = proyecciones));
   }
 }

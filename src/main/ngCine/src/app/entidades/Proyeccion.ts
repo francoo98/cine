@@ -1,4 +1,5 @@
 import { Pelicula } from './Pelicula';
+import { Sala } from './Sala';
 
 export class Proyeccion {
   id: number;
@@ -6,16 +7,14 @@ export class Proyeccion {
   fechaFin: Date;
   hora: Date;
   estado: Boolean;
-  sala: number;
+  sala: Sala;
   pelicula: Pelicula;
 
-  constructor(id: number, fechaInicio: Date, fechaFin: Date, hora: Date, estado: boolean, sala: number, pelicula: Pelicula) {
+  constructor(id: number, fechaInicio: Date, fechaFin: Date, hora: Date, estado: boolean) {
     this.id = id;
     this.fechaInicio = fechaInicio;
     this.fechaFin = fechaFin;
     this.hora = hora;
     this.estado = estado;
-    this.sala = sala;
-    this.pelicula = pelicula;
   }
 }
