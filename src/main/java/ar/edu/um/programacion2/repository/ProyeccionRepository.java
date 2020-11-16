@@ -6,9 +6,11 @@ import ar.edu.um.programacion2.domain.Proyeccion;
 import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,5 +33,8 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 		 + "where p.fechaInicio < ?2 and p.fechaFin > ?1 "
 		 + "group by b.proyeccion order by count(b) desc")
 	Page<Proyeccion> masVendidas(LocalDate inicio, LocalDate fin, Pageable pageable);
+
+	Optional<Proyeccion> findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(
+			Long pelicula_id, LocalDate fecha, LocalDate fecha2);
 
 }
