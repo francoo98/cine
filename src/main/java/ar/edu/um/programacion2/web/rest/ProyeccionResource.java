@@ -121,7 +121,7 @@ public class ProyeccionResource {
 	public ResponseEntity<Proyeccion> getProyeccionDePeliculaFecha(@PathVariable Long id, @PathVariable LocalDate fecha) {
 		log.debug("REST request to get all Proyeccions of pelicula : {} in date {}", id, fecha);
 		Optional<Proyeccion> proyeccion = proyeccionRepository
-				.findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(id, fecha, fecha);
+				.findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(id, fecha);
 		return ResponseUtil.wrapOrNotFound(proyeccion);
 	}
 	
