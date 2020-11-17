@@ -145,7 +145,13 @@ public class PeliculaResource {
 	@DeleteMapping("/peliculas/{id}")
 	public ResponseEntity<Void> deletePelicula(@PathVariable Long id) {
 		log.debug("REST request to delete Pelicula : {}", id);
-		peliculaRepository.deleteById(id);
+		Optional<Pelicula> pelicula = this.peliculaRepository.findById(id);
+		if(pelicula.isPresent()) {
+			if(pelicula.get().isEstado()) {
+				pelicula.get().setEstado(false);
+				this.peliculaRepository.save(pelicula.get());
+			}
+		}
 		return ResponseEntity.noContent()
 				.headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
 				.build();

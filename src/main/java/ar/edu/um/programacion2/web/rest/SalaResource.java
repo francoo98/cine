@@ -1,6 +1,8 @@
 package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Sala;
+import ar.edu.um.programacion2.domain.enumeration.EstadosSala;
+
 import ar.edu.um.programacion2.repository.SalaRepository;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
@@ -119,7 +121,12 @@ public class SalaResource {
 	@DeleteMapping("/salas/{id}")
 	public ResponseEntity<Void> deleteSala(@PathVariable Long id) {
 		log.debug("REST request to delete Sala : {}", id);
-		salaRepository.deleteById(id);
+		Optional<Sala> sala = this.salaRepository.findById(id);
+		if(sala.isPresent()) {
+			if(sala.get().getEstado() != EstadosSala.Eliminada) {
+				sala.get().setEstado(EstadosSala.Eliminada);
+			}
+		}
 		return ResponseEntity.noContent()
 				.headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
 				.build();

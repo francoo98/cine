@@ -1,0 +1,187 @@
+{
+  "peliculas": [
+    {
+      "nombre": "Cadena perpetua",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 134,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-05-14",
+      "fechaFin": "2020-05-23"
+    },
+    {
+      "nombre": "El padrino",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 154,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-06-03",
+      "fechaFin": "2020-06-17"
+    },
+    {
+      "nombre": "El caballero oscuro",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 119,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-01-01",
+      "fechaFin": "2020-01-17"
+    },
+    {
+      "nombre": "12 hombres sin piedad",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 157,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-01-01",
+      "fechaFin": "2020-01-17"
+    },
+    {
+      "nombre": "El bueno, el feo y el malo",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 151,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-01-24",
+      "fechaFin": "2020-02-17"
+    },
+    {
+      "nombre": "Pulp Fiction",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 149,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-11-16",
+      "fechaFin": "2020-12-17"
+    },
+    {
+      "nombre": "El señor de los anillos: El retorno del rey",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 154,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-04-29",
+      "fechaFin": "2020-05-12"
+    },
+    {
+      "nombre": "La lista de Schindler",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 119,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2019-12-24",
+      "fechaFin": "2020-07-01"
+    },
+    {
+      "nombre": "El club de la lucha",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 130,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-10-11",
+      "fechaFin": "2020-11-01"
+    },
+    {
+      "nombre": "Forrest Gump",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 141,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-08-22",
+      "fechaFin": "2020-09-05"
+    },
+    {
+      "nombre": "Origen",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 124,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-04-14",
+      "fechaFin": "2020-05-22"
+    },
+    {
+      "nombre": "Matrix",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 113,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-06-16",
+      "fechaFin": "2020-09-11"
+    },
+    {
+      "nombre": "Seven",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 145,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-01-02",
+      "fechaFin": "2020-02-09"
+    },
+    {
+      "nombre": "Uno de los nuestros",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 114,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-07-10",
+      "fechaFin": "2020-09-21"
+    },
+    {
+      "nombre": "Los siete samurais",
+      "descripcion": "",
+      "detalle": "",
+      "duracion": 104,
+      "genero": "Drama",
+      "clasificacion": "1",
+      "estado": true,
+      "fechaInicio": "2020-07-07",
+      "fechaFin": "2020-07-27"
+    }
+  ],
+  "salas": [
+    { "nombre": "Roja", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Azul", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Amarilla", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Celeste", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Verde", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Naranja", "estado": 0, "filas": 11, "asientos": 20 },
+    { "nombre": "Violeta", "estado": 0, "filas": 11, "asientos": 20 }
+  ],
+  "proyecciones": [
+    { "fechaInicio": "2020-01-06", "fechaFin": "2020-02-01", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-02-06", "fechaFin": "2020-02-24", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-09-16", "fechaFin": "2020-10-07", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-05-16", "fechaFin": "2020-06-07", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-03-23", "fechaFin": "2020-04-27", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-12-01", "fechaFin": "2020-12-22", "hora": 0, "estado": true, "sala": {}, "pelicula": {} }
+  ],
+  "butacas": []
+}

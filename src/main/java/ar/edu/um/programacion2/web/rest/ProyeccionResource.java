@@ -148,7 +148,14 @@ public class ProyeccionResource {
 	@DeleteMapping("/proyeccions/{id}")
 	public ResponseEntity<Void> deleteProyeccion(@PathVariable Long id) {
 		log.debug("REST request to delete Proyeccion : {}", id);
-		proyeccionRepository.deleteById(id);
+		//proyeccionRepository.deleteById(id);
+		Optional<Proyeccion> proyeccion = this.proyeccionRepository.findById(id);
+		if(proyeccion.isPresent()) {
+			if(proyeccion.get().isEstado()) {
+				proyeccion.get().setEstado(false);
+				this.proyeccionRepository.save(proyeccion.get());
+			}
+		}
 		return ResponseEntity.noContent()
 				.headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
 				.build();

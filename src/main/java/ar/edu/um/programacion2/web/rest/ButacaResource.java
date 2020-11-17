@@ -9,6 +9,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -117,11 +118,8 @@ public class ButacaResource {
 	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
 	 */
 	@DeleteMapping("/butacas/{id}")
-	public ResponseEntity<Void> deleteButaca(@PathVariable Long id) {
+	public ResponseEntity<String> deleteButaca(@PathVariable Long id) {
 		log.debug("REST request to delete Butaca : {}", id);
-		butacaRepository.deleteById(id);
-		return ResponseEntity.noContent()
-				.headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
-				.build();
+		return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body("DELETE no es soportado para butacas.");
 	}
 }
