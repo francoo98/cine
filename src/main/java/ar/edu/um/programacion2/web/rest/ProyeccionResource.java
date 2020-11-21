@@ -1,7 +1,9 @@
 package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Proyeccion;
+import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
+import ar.edu.um.programacion2.repository.SalaRepository;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,6 +11,8 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -34,11 +38,16 @@ public class ProyeccionResource {
 
 	@Value("${jhipster.clientApp.name}")
 	private String applicationName;
-
 	private final ProyeccionRepository proyeccionRepository;
+	private final SalaRepository salaRepository;
+	private final PeliculaRepository peliculaRepository;
+	
 
-	public ProyeccionResource(ProyeccionRepository proyeccionRepository) {
+	public ProyeccionResource(ProyeccionRepository proyeccionRepository, SalaRepository salaRepository,
+								PeliculaRepository peliculaRepository) {
 		this.proyeccionRepository = proyeccionRepository;
+		this.salaRepository = salaRepository;
+		this.peliculaRepository = peliculaRepository;
 	}
 
 	/**
@@ -53,8 +62,9 @@ public class ProyeccionResource {
 	@PostMapping("/proyeccions")
 	public ResponseEntity<Proyeccion> createProyeccion(@RequestBody Proyeccion proyeccion) throws URISyntaxException {
 		log.debug("REST request to save Proyeccion : {}", proyeccion);
-		if (proyeccion.getId() != null) {
-			throw new BadRequestAlertException("A new proyeccion cannot already have an ID", ENTITY_NAME, "idexists");
+		if (proyeccion.getId() != null || !salaRepository.existsById(proyeccion.getSala().getId()) || 
+			!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
+			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Idexists or peliculaid or salaid dosnt't");
 		}
 		Proyeccion result = proyeccionRepository.save(proyeccion);
 		return ResponseEntity
@@ -118,10 +128,12 @@ public class ProyeccionResource {
 	}
 
 	@GetMapping("/proyeccions/pelicula/{id}/fecha/{fecha}")
-	public ResponseEntity<Proyeccion> getProyeccionDePeliculaFecha(@PathVariable Long id, @PathVariable LocalDate fecha) {
+	public ResponseEntity<List<Proyeccion>> getProyeccionDePeliculaFecha(@PathVariable Long id, @PathVariable LocalDate fecha) {
 		log.debug("REST request to get all Proyeccions of pelicula : {} in date {}", id, fecha);
-		Optional<Proyeccion> proyeccion = proyeccionRepository
+		Optional<List<Proyeccion>> proyeccion = proyeccionRepository
 				.findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(id, fecha);
+		/*Optional<List<Proyeccion>> proyecciones = proyeccionRepository
+				.findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(id, fecha);*/
 		return ResponseUtil.wrapOrNotFound(proyeccion);
 	}
 	
@@ -146,15 +158,18 @@ public class ProyeccionResource {
 	 * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
 	 */
 	@DeleteMapping("/proyeccions/{id}")
-	public ResponseEntity<Void> deleteProyeccion(@PathVariable Long id) {
+	public ResponseEntity<String> deleteProyeccion(@PathVariable Long id) {
 		log.debug("REST request to delete Proyeccion : {}", id);
-		//proyeccionRepository.deleteById(id);
 		Optional<Proyeccion> proyeccion = this.proyeccionRepository.findById(id);
-		if(proyeccion.isPresent()) {
-			if(proyeccion.get().isEstado()) {
-				proyeccion.get().setEstado(false);
-				this.proyeccionRepository.save(proyeccion.get());
+		try {
+			Proyeccion p = proyeccion.get();
+			if(p.isEstado()) {
+				p.setEstado(false);
+				this.proyeccionRepository.save(p);
 			}
+		}
+		catch (Exception e) {
+			log.debug("ERROR Request to delete proyeccion: ID {} doesn't exist", id);
 		}
 		return ResponseEntity.noContent()
 				.headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))

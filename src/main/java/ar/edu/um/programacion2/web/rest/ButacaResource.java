@@ -2,6 +2,7 @@ package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Butaca;
 import ar.edu.um.programacion2.repository.ButacaRepository;
+import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -9,6 +10,7 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +38,11 @@ public class ButacaResource {
 
 	private final ButacaRepository butacaRepository;
 
-	public ButacaResource(ButacaRepository butacaRepository) {
+	private final ProyeccionRepository proyeccionRepository;
+
+	public ButacaResource(ButacaRepository butacaRepository, ProyeccionRepository proyeccionRepository) {
 		this.butacaRepository = butacaRepository;
+		this.proyeccionRepository = proyeccionRepository;
 	}
 
 	/**
@@ -54,6 +59,9 @@ public class ButacaResource {
 		log.debug("REST request to save Butaca : {}", butaca);
 		if (butaca.getId() != null) {
 			throw new BadRequestAlertException("A new butaca cannot already have an ID", ENTITY_NAME, "idexists");
+		}
+		if(!proyeccionRepository.existsById(butaca.getProyeccion().getId())) {
+			throw new BadRequestAlertException("Proyeccion id doesn't exist", ENTITY_NAME, "proyeccionid");
 		}
 		Butaca result = butacaRepository.save(butaca);
 		return ResponseEntity

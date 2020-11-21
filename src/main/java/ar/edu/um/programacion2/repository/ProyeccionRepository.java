@@ -35,7 +35,7 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 	Page<Proyeccion> masVendidas(LocalDate inicio, LocalDate fin, Pageable pageable);
 
 	@Query("select p from Proyeccion p where pelicula.id = ?1 and ?2 between fechaInicio and fechaFin and estado = True")
-	Optional<Proyeccion> findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(Long pelicula_id,
+	Optional<List<Proyeccion>> findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(Long pelicula_id,
 																						 LocalDate fecha);
 
 }

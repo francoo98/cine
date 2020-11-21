@@ -99,15 +99,15 @@ public class PeliculaResource {
 	 *         of peliculas in body.
 	 */
 	@GetMapping("/peliculas")
-	public List<Pelicula> getAllPeliculas() {
+	public ResponseEntity<List<Pelicula>> getAllPeliculas() {
 		log.debug("REST request to get all Peliculas");
-		return peliculaRepository.findAll();
+		return ResponseEntity.ok(peliculaRepository.findAll());
 	}
 
 	@GetMapping("/peliculas/{inicio}/{fin}")
-	public List<Pelicula> getAllPeliculasBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
+	public ResponseEntity<List<Pelicula>> getAllPeliculasBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
 		log.debug("REST request to get all Peliculas between : {} - {}", inicio, fin);
-		return peliculaRepository.findAllByFechaFinAfterAndFechaInicioBeforeAndEstadoTrue(inicio, fin);
+		return ResponseEntity.ok(peliculaRepository.findAllByFechaFinAfterAndFechaInicioBeforeAndEstadoTrue(inicio, fin));
 	}
 
 	@GetMapping("/peliculas/{id}/{inicio}/{fin}")
