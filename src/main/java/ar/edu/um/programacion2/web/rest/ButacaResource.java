@@ -3,6 +3,7 @@ package ar.edu.um.programacion2.web.rest;
 import ar.edu.um.programacion2.domain.Butaca;
 import ar.edu.um.programacion2.repository.ButacaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
+import ar.edu.um.programacion2.service.ButacaService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -30,19 +31,20 @@ import java.util.Optional;
 public class ButacaResource {
 
 	private final Logger log = LoggerFactory.getLogger(ButacaResource.class);
-
 	private static final String ENTITY_NAME = "butaca";
-
 	@Value("${jhipster.clientApp.name}")
 	private String applicationName;
-
+	
 	private final ButacaRepository butacaRepository;
-
 	private final ProyeccionRepository proyeccionRepository;
+	
+	private final ButacaService butacaService;
 
-	public ButacaResource(ButacaRepository butacaRepository, ProyeccionRepository proyeccionRepository) {
+	public ButacaResource(ButacaRepository butacaRepository, ProyeccionRepository proyeccionRepository,
+						  ButacaService butacaService) {
 		this.butacaRepository = butacaRepository;
 		this.proyeccionRepository = proyeccionRepository;
+		this.butacaService = butacaService;
 	}
 
 	/**
@@ -63,7 +65,7 @@ public class ButacaResource {
 		if(!proyeccionRepository.existsById(butaca.getProyeccion().getId())) {
 			throw new BadRequestAlertException("Proyeccion id doesn't exist", ENTITY_NAME, "proyeccionid");
 		}
-		Butaca result = butacaRepository.save(butaca);
+		Butaca result = butacaService.save(butaca);
 		return ResponseEntity
 				.created(new URI("/api/butacas/" + result.getId())).headers(HeaderUtil
 						.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -39,8 +40,8 @@ public class ProyeccionResourceIT {
 	private static final LocalDate DEFAULT_FECHA_FIN = LocalDate.ofEpochDay(0L);
 	private static final LocalDate UPDATED_FECHA_FIN = LocalDate.now(ZoneId.systemDefault());
 
-	private static final Instant DEFAULT_HORA = Instant.ofEpochMilli(0L);
-	private static final Instant UPDATED_HORA = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+	private static final LocalDateTime DEFAULT_HORA = LocalDateTime.of(2020, 06, 22, 12, 00);
+	private static final LocalDateTime UPDATED_HORA = LocalDateTime.now();
 
 	private static final Boolean DEFAULT_ESTADO = false;
 	private static final Boolean UPDATED_ESTADO = true;
