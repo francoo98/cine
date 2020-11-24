@@ -13,50 +13,50 @@ application {
 
 entity Pelicula {
 	id Long unique required
-    nombre String
-    descriptcion String
+    nombre String required
+    descripcion String
     detalle String
     duracion Integer min(0) max(400)
     genero String
     clasificacion String
-    estado Boolean
-    fechaInicio LocalDate
-    fechaFin LocalDate
+    estado Boolean required
+    fechaInicio LocalDate required
+    fechaFin LocalDate required
 }
 
 entity Proyeccion {
 	id Long unique required
-    fechaInicio LocalDate
-    fechaFin LocalDate
-    hora Instant
-    estado Boolean
+    fechaInicio LocalDate required
+    fechaFin LocalDate required
+    hora LocalDate required
+    estado Boolean required
 }
 
 entity Sala {
 	id Long unique required
-    nombre String
-    estado EstadosSala
-    filas Integer
-    asientos Integer
+    nombre String required
+    estado EstadosSala required
+    filas Integer required min(10) max(15)
+    asientos Integer required min(10) max(15)
 }
 
 entity Butaca {
 	id Long unique required
-    fechaDeVenta Instant
-    fila Integer
-  	asiento Integer
+	fechaDeVenta LocalDate required 
+	fila Integer required min(10) max(15)
+  	asiento Integer required min(10) max(15)
 }
 
 relationship ManyToOne {
-	Butaca{proyeccion} to Proyeccion
+	Butaca{proyeccion required} to Proyeccion
 }
 
 relationship ManyToOne {
-	Proyeccion{pelicula} to Pelicula
+	Proyeccion{pelicula required} to Pelicula
 }
 
-relationship OneToOne {
-	Proyeccion{sala} to Sala
+relationship ManyToOne {
+	Proyeccion{sala required} to Sala
 }
 
 enum EstadosSala {

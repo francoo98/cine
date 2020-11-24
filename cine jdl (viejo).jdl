@@ -1,0 +1,67 @@
+
+application {
+  config {
+    baseName cine,
+    applicationType monolith,
+    packageName ar.edu.um.programacion2,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+entity Pelicula {
+	id Long unique required
+    nombre String
+    descriptcion String
+    detalle String
+    duracion Integer min(0) max(400)
+    genero String
+    clasificacion String
+    estado Boolean
+    fechaInicio LocalDate
+    fechaFin LocalDate
+}
+
+entity Proyeccion {
+	id Long unique required
+    fechaInicio LocalDate
+    fechaFin LocalDate
+    hora Instant
+    estado Boolean
+}
+
+entity Sala {
+	id Long unique required
+    nombre String
+    estado EstadosSala
+    filas Integer
+    asientos Integer
+}
+
+entity Butaca {
+	id Long unique required
+    fechaDeVenta Instant
+    fila Integer
+  	asiento Integer
+}
+
+relationship ManyToOne {
+	Butaca{proyeccion} to Proyeccion
+}
+
+relationship ManyToOne {
+	Proyeccion{pelicula} to Pelicula
+}
+
+relationship OneToOne {
+	Proyeccion{sala} to Sala
+}
+
+enum EstadosSala {
+	Habilitada
+    Deshabilitada
+    Eliminada
+}
+    
