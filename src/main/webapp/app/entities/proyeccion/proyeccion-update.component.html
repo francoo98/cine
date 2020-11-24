@@ -19,6 +19,12 @@
                             <button type="button" class="btn btn-secondary" (click)="fechaInicioDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
+                    <div *ngIf="editForm.get('fechaInicio')!.invalid && (editForm.get('fechaInicio')!.dirty || editForm.get('fechaInicio')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaInicio')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -29,12 +35,27 @@
                             <button type="button" class="btn btn-secondary" (click)="fechaFinDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
+                    <div *ngIf="editForm.get('fechaFin')!.invalid && (editForm.get('fechaFin')!.dirty || editForm.get('fechaFin')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaFin')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.proyeccion.hora" for="field_hora">Hora</label>
-                    <div class="d-flex">
-                        <input id="field_hora" type="datetime-local" class="form-control" name="hora" formControlName="hora" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="input-group">
+                        <input id="field_hora" type="text" class="form-control" name="hora" ngbDatepicker #horaDp="ngbDatepicker" formControlName="hora"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="horaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('hora')!.invalid && (editForm.get('hora')!.dirty || editForm.get('hora')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('hora')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
                     </div>
                 </div>
 
@@ -42,22 +63,40 @@
                     <label class="form-control-label" jhiTranslate="cineApp.proyeccion.estado" for="field_estado">Estado</label>
                     <input type="checkbox" class="form-control" name="estado" id="field_estado"
                            formControlName="estado"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="cineApp.proyeccion.sala" for="field_sala">Sala</label>
-                    <select class="form-control" id="field_sala" name="sala" formControlName="sala">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="salaOption.id === editForm.get('sala')!.value?.id ? editForm.get('sala')!.value : salaOption" *ngFor="let salaOption of salas; trackBy: trackById">{{ salaOption.id }}</option>
-                    </select>
+                    <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.proyeccion.pelicula" for="field_pelicula">Pelicula</label>
                     <select class="form-control" id="field_pelicula" name="pelicula" formControlName="pelicula">
-                        <option [ngValue]="null"></option>
+                        <option *ngIf="!editForm.get('pelicula')!.value" [ngValue]="null" selected></option>
                         <option [ngValue]="peliculaOption.id === editForm.get('pelicula')!.value?.id ? editForm.get('pelicula')!.value : peliculaOption" *ngFor="let peliculaOption of peliculas; trackBy: trackById">{{ peliculaOption.id }}</option>
                     </select>
+                </div>
+                <div *ngIf="editForm.get('pelicula')!.invalid && (editForm.get('pelicula')!.dirty || editForm.get('pelicula')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('pelicula')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cineApp.proyeccion.sala" for="field_sala">Sala</label>
+                    <select class="form-control" id="field_sala" name="sala" formControlName="sala">
+                        <option *ngIf="!editForm.get('sala')!.value" [ngValue]="null" selected></option>
+                        <option [ngValue]="salaOption.id === editForm.get('sala')!.value?.id ? editForm.get('sala')!.value : salaOption" *ngFor="let salaOption of salas; trackBy: trackById">{{ salaOption.id }}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('sala')!.invalid && (editForm.get('sala')!.dirty || editForm.get('sala')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('sala')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
 

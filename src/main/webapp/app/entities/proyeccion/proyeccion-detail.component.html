@@ -24,16 +24,16 @@
                 <dd>
                     <span>{{ proyeccion.estado }}</span>
                 </dd>
-                <dt><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></dt>
-                <dd>
-                    <div *ngIf="proyeccion.sala">
-                        <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']">{{ proyeccion.sala?.id }}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="cineApp.proyeccion.pelicula">Pelicula</span></dt>
                 <dd>
                     <div *ngIf="proyeccion.pelicula">
                         <a [routerLink]="['/pelicula', proyeccion.pelicula?.id, 'view']">{{ proyeccion.pelicula?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></dt>
+                <dd>
+                    <div *ngIf="proyeccion.sala">
+                        <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']">{{ proyeccion.sala?.id }}</a>
                     </div>
                 </dd>
             </dl>

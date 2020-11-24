@@ -4,8 +4,6 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IButaca, Butaca } from 'app/shared/model/butaca.model';
 import { ButacaService } from './butaca.service';
@@ -19,13 +17,14 @@ import { ProyeccionService } from 'app/entities/proyeccion/proyeccion.service';
 export class ButacaUpdateComponent implements OnInit {
   isSaving = false;
   proyeccions: IProyeccion[] = [];
+  fechaDeVentaDp: any;
 
   editForm = this.fb.group({
     id: [],
-    fechaDeVenta: [],
-    fila: [],
-    asiento: [],
-    proyeccion: [],
+    fechaDeVenta: [null, [Validators.required]],
+    fila: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    asiento: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    proyeccion: [null, Validators.required],
   });
 
   constructor(
@@ -37,11 +36,6 @@ export class ButacaUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ butaca }) => {
-      if (!butaca.id) {
-        const today = moment().startOf('day');
-        butaca.fechaDeVenta = today;
-      }
-
       this.updateForm(butaca);
 
       this.proyeccionService.query().subscribe((res: HttpResponse<IProyeccion[]>) => (this.proyeccions = res.body || []));
@@ -51,7 +45,7 @@ export class ButacaUpdateComponent implements OnInit {
   updateForm(butaca: IButaca): void {
     this.editForm.patchValue({
       id: butaca.id,
-      fechaDeVenta: butaca.fechaDeVenta ? butaca.fechaDeVenta.format(DATE_TIME_FORMAT) : null,
+      fechaDeVenta: butaca.fechaDeVenta,
       fila: butaca.fila,
       asiento: butaca.asiento,
       proyeccion: butaca.proyeccion,
@@ -76,9 +70,7 @@ export class ButacaUpdateComponent implements OnInit {
     return {
       ...new Butaca(),
       id: this.editForm.get(['id'])!.value,
-      fechaDeVenta: this.editForm.get(['fechaDeVenta'])!.value
-        ? moment(this.editForm.get(['fechaDeVenta'])!.value, DATE_TIME_FORMAT)
-        : undefined,
+      fechaDeVenta: this.editForm.get(['fechaDeVenta'])!.value,
       fila: this.editForm.get(['fila'])!.value,
       asiento: this.editForm.get(['asiento'])!.value,
       proyeccion: this.editForm.get(['proyeccion'])!.value,

@@ -27,8 +27,8 @@
                     <th scope="col" ><span jhiTranslate="cineApp.proyeccion.fechaFin">Fecha Fin</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.proyeccion.hora">Hora</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.proyeccion.estado">Estado</span></th>
-                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.proyeccion.pelicula">Pelicula</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.proyeccion.sala">Sala</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -37,16 +37,16 @@
                     <td><a [routerLink]="['/proyeccion', proyeccion.id, 'view']">{{ proyeccion.id }}</a></td>
                     <td>{{ proyeccion.fechaInicio | date:'mediumDate' }}</td>
                     <td>{{ proyeccion.fechaFin | date:'mediumDate' }}</td>
-                    <td>{{ proyeccion.hora | date:'medium' }}</td>
+                    <td>{{ proyeccion.hora | date:'mediumDate' }}</td>
                     <td>{{ proyeccion.estado }}</td>
-                    <td>
-                        <div *ngIf="proyeccion.sala">
-                            <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']" >{{ proyeccion.sala?.id }}</a>
-                        </div>
-                    </td>
                     <td>
                         <div *ngIf="proyeccion.pelicula">
                             <a [routerLink]="['/pelicula', proyeccion.pelicula?.id, 'view']" >{{ proyeccion.pelicula?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="proyeccion.sala">
+                            <a [routerLink]="['/sala', proyeccion.sala?.id, 'view']" >{{ proyeccion.sala?.id }}</a>
                         </div>
                     </td>
                     <td class="text-right">

@@ -73,7 +73,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nombre: 'BBBBBB',
-            descriptcion: 'BBBBBB',
+            descripcion: 'BBBBBB',
             detalle: 'BBBBBB',
             duracion: 1,
             genero: 'BBBBBB',
@@ -104,7 +104,7 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             nombre: 'BBBBBB',
-            descriptcion: 'BBBBBB',
+            descripcion: 'BBBBBB',
             detalle: 'BBBBBB',
             duracion: 1,
             genero: 'BBBBBB',

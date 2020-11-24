@@ -3,7 +3,7 @@ import { Moment } from 'moment';
 export interface IPelicula {
   id?: number;
   nombre?: string;
-  descriptcion?: string;
+  descripcion?: string;
   detalle?: string;
   duracion?: number;
   genero?: string;
@@ -17,7 +17,7 @@ export class Pelicula implements IPelicula {
   constructor(
     public id?: number,
     public nombre?: string,
-    public descriptcion?: string,
+    public descripcion?: string,
     public detalle?: string,
     public duracion?: number,
     public genero?: string,

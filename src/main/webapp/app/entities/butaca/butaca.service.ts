@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IButaca } from 'app/shared/model/butaca.model';
@@ -50,7 +51,7 @@ export class ButacaService {
 
   protected convertDateFromClient(butaca: IButaca): IButaca {
     const copy: IButaca = Object.assign({}, butaca, {
-      fechaDeVenta: butaca.fechaDeVenta && butaca.fechaDeVenta.isValid() ? butaca.fechaDeVenta.toJSON() : undefined,
+      fechaDeVenta: butaca.fechaDeVenta && butaca.fechaDeVenta.isValid() ? butaca.fechaDeVenta.format(DATE_FORMAT) : undefined,
     });
     return copy;
   }

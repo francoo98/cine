@@ -13,8 +13,17 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.butaca.fechaDeVenta" for="field_fechaDeVenta">Fecha De Venta</label>
-                    <div class="d-flex">
-                        <input id="field_fechaDeVenta" type="datetime-local" class="form-control" name="fechaDeVenta" formControlName="fechaDeVenta" placeholder="YYYY-MM-DD HH:mm"/>
+                    <div class="input-group">
+                        <input id="field_fechaDeVenta" type="text" class="form-control" name="fechaDeVenta" ngbDatepicker #fechaDeVentaDp="ngbDatepicker" formControlName="fechaDeVenta"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="fechaDeVentaDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('fechaDeVenta')!.invalid && (editForm.get('fechaDeVenta')!.dirty || editForm.get('fechaDeVenta')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaDeVenta')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
                     </div>
                 </div>
 
@@ -22,20 +31,62 @@
                     <label class="form-control-label" jhiTranslate="cineApp.butaca.fila" for="field_fila">Fila</label>
                     <input type="number" class="form-control" name="fila" id="field_fila"
                            formControlName="fila"/>
+                    <div *ngIf="editForm.get('fila')!.invalid && (editForm.get('fila')!.dirty || editForm.get('fila')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fila')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fila')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 10 }">
+                            This field should be at least 10.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fila')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 15 }">
+                            This field cannot be more than 15.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fila')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.butaca.asiento" for="field_asiento">Asiento</label>
                     <input type="number" class="form-control" name="asiento" id="field_asiento"
                            formControlName="asiento"/>
+                    <div *ngIf="editForm.get('asiento')!.invalid && (editForm.get('asiento')!.dirty || editForm.get('asiento')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('asiento')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('asiento')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 10 }">
+                            This field should be at least 10.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('asiento')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 15 }">
+                            This field cannot be more than 15.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('asiento')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.butaca.proyeccion" for="field_proyeccion">Proyeccion</label>
                     <select class="form-control" id="field_proyeccion" name="proyeccion" formControlName="proyeccion">
-                        <option [ngValue]="null"></option>
+                        <option *ngIf="!editForm.get('proyeccion')!.value" [ngValue]="null" selected></option>
                         <option [ngValue]="proyeccionOption.id === editForm.get('proyeccion')!.value?.id ? editForm.get('proyeccion')!.value : proyeccionOption" *ngFor="let proyeccionOption of proyeccions; trackBy: trackById">{{ proyeccionOption.id }}</option>
                     </select>
+                </div>
+                <div *ngIf="editForm.get('proyeccion')!.invalid && (editForm.get('proyeccion')!.dirty || editForm.get('proyeccion')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('proyeccion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
                 </div>
             </div>
 

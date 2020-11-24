@@ -76,7 +76,7 @@ public class PeliculaResourceIT {
 	 * they test an entity which requires the current entity.
 	 */
 	public static Pelicula createEntity(EntityManager em) {
-		Pelicula pelicula = new Pelicula().nombre(DEFAULT_NOMBRE).descriptcion(DEFAULT_DESCRIPTCION)
+		Pelicula pelicula = new Pelicula().nombre(DEFAULT_NOMBRE).descripcion(DEFAULT_DESCRIPTCION)
 				.detalle(DEFAULT_DETALLE).duracion(DEFAULT_DURACION).genero(DEFAULT_GENERO)
 				.clasificacion(DEFAULT_CLASIFICACION).estado(DEFAULT_ESTADO).fechaInicio(DEFAULT_FECHA_INICIO)
 				.fechaFin(DEFAULT_FECHA_FIN);
@@ -90,7 +90,7 @@ public class PeliculaResourceIT {
 	 * they test an entity which requires the current entity.
 	 */
 	public static Pelicula createUpdatedEntity(EntityManager em) {
-		Pelicula pelicula = new Pelicula().nombre(UPDATED_NOMBRE).descriptcion(UPDATED_DESCRIPTCION)
+		Pelicula pelicula = new Pelicula().nombre(UPDATED_NOMBRE).descripcion(UPDATED_DESCRIPTCION)
 				.detalle(UPDATED_DETALLE).duracion(UPDATED_DURACION).genero(UPDATED_GENERO)
 				.clasificacion(UPDATED_CLASIFICACION).estado(UPDATED_ESTADO).fechaInicio(UPDATED_FECHA_INICIO)
 				.fechaFin(UPDATED_FECHA_FIN);
@@ -115,7 +115,7 @@ public class PeliculaResourceIT {
 		assertThat(peliculaList).hasSize(databaseSizeBeforeCreate + 1);
 		Pelicula testPelicula = peliculaList.get(peliculaList.size() - 1);
 		assertThat(testPelicula.getNombre()).isEqualTo(DEFAULT_NOMBRE);
-		assertThat(testPelicula.getDescriptcion()).isEqualTo(DEFAULT_DESCRIPTCION);
+		assertThat(testPelicula.getDescripcion()).isEqualTo(DEFAULT_DESCRIPTCION);
 		assertThat(testPelicula.getDetalle()).isEqualTo(DEFAULT_DETALLE);
 		assertThat(testPelicula.getDuracion()).isEqualTo(DEFAULT_DURACION);
 		assertThat(testPelicula.getGenero()).isEqualTo(DEFAULT_GENERO);
@@ -204,7 +204,7 @@ public class PeliculaResourceIT {
 		// Disconnect from session so that the updates on updatedPelicula are not
 		// directly saved in db
 		em.detach(updatedPelicula);
-		updatedPelicula.nombre(UPDATED_NOMBRE).descriptcion(UPDATED_DESCRIPTCION).detalle(UPDATED_DETALLE)
+		updatedPelicula.nombre(UPDATED_NOMBRE).descripcion(UPDATED_DESCRIPTCION).detalle(UPDATED_DETALLE)
 				.duracion(UPDATED_DURACION).genero(UPDATED_GENERO).clasificacion(UPDATED_CLASIFICACION)
 				.estado(UPDATED_ESTADO).fechaInicio(UPDATED_FECHA_INICIO).fechaFin(UPDATED_FECHA_FIN);
 
@@ -216,7 +216,7 @@ public class PeliculaResourceIT {
 		assertThat(peliculaList).hasSize(databaseSizeBeforeUpdate);
 		Pelicula testPelicula = peliculaList.get(peliculaList.size() - 1);
 		assertThat(testPelicula.getNombre()).isEqualTo(UPDATED_NOMBRE);
-		assertThat(testPelicula.getDescriptcion()).isEqualTo(UPDATED_DESCRIPTCION);
+		assertThat(testPelicula.getDescripcion()).isEqualTo(UPDATED_DESCRIPTCION);
 		assertThat(testPelicula.getDetalle()).isEqualTo(UPDATED_DETALLE);
 		assertThat(testPelicula.getDuracion()).isEqualTo(UPDATED_DURACION);
 		assertThat(testPelicula.getGenero()).isEqualTo(UPDATED_GENERO);

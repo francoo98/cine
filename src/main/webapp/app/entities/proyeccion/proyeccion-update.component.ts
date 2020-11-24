@@ -4,18 +4,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import * as moment from 'moment';
-import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IProyeccion, Proyeccion } from 'app/shared/model/proyeccion.model';
 import { ProyeccionService } from './proyeccion.service';
-import { ISala } from 'app/shared/model/sala.model';
-import { SalaService } from 'app/entities/sala/sala.service';
 import { IPelicula } from 'app/shared/model/pelicula.model';
 import { PeliculaService } from 'app/entities/pelicula/pelicula.service';
+import { ISala } from 'app/shared/model/sala.model';
+import { SalaService } from 'app/entities/sala/sala.service';
 
-type SelectableEntity = ISala | IPelicula;
+type SelectableEntity = IPelicula | ISala;
 
 @Component({
   selector: 'jhi-proyeccion-update',
@@ -23,61 +20,37 @@ type SelectableEntity = ISala | IPelicula;
 })
 export class ProyeccionUpdateComponent implements OnInit {
   isSaving = false;
-  salas: ISala[] = [];
   peliculas: IPelicula[] = [];
+  salas: ISala[] = [];
   fechaInicioDp: any;
   fechaFinDp: any;
+  horaDp: any;
 
   editForm = this.fb.group({
     id: [],
-    fechaInicio: [],
-    fechaFin: [],
-    hora: [],
-    estado: [],
-    sala: [],
-    pelicula: [],
+    fechaInicio: [null, [Validators.required]],
+    fechaFin: [null, [Validators.required]],
+    hora: [null, [Validators.required]],
+    estado: [null, [Validators.required]],
+    pelicula: [null, Validators.required],
+    sala: [null, Validators.required],
   });
 
   constructor(
     protected proyeccionService: ProyeccionService,
-    protected salaService: SalaService,
     protected peliculaService: PeliculaService,
+    protected salaService: SalaService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ proyeccion }) => {
-      if (!proyeccion.id) {
-        const today = moment().startOf('day');
-        proyeccion.hora = today;
-      }
-
       this.updateForm(proyeccion);
 
-      this.salaService
-        .query({ filter: 'proyeccion-is-null' })
-        .pipe(
-          map((res: HttpResponse<ISala[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: ISala[]) => {
-          if (!proyeccion.sala || !proyeccion.sala.id) {
-            this.salas = resBody;
-          } else {
-            this.salaService
-              .find(proyeccion.sala.id)
-              .pipe(
-                map((subRes: HttpResponse<ISala>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: ISala[]) => (this.salas = concatRes));
-          }
-        });
-
       this.peliculaService.query().subscribe((res: HttpResponse<IPelicula[]>) => (this.peliculas = res.body || []));
+
+      this.salaService.query().subscribe((res: HttpResponse<ISala[]>) => (this.salas = res.body || []));
     });
   }
 
@@ -86,10 +59,10 @@ export class ProyeccionUpdateComponent implements OnInit {
       id: proyeccion.id,
       fechaInicio: proyeccion.fechaInicio,
       fechaFin: proyeccion.fechaFin,
-      hora: proyeccion.hora ? proyeccion.hora.format(DATE_TIME_FORMAT) : null,
+      hora: proyeccion.hora,
       estado: proyeccion.estado,
-      sala: proyeccion.sala,
       pelicula: proyeccion.pelicula,
+      sala: proyeccion.sala,
     });
   }
 
@@ -113,10 +86,10 @@ export class ProyeccionUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       fechaInicio: this.editForm.get(['fechaInicio'])!.value,
       fechaFin: this.editForm.get(['fechaFin'])!.value,
-      hora: this.editForm.get(['hora'])!.value ? moment(this.editForm.get(['hora'])!.value, DATE_TIME_FORMAT) : undefined,
+      hora: this.editForm.get(['hora'])!.value,
       estado: this.editForm.get(['estado'])!.value,
-      sala: this.editForm.get(['sala'])!.value,
       pelicula: this.editForm.get(['pelicula'])!.value,
+      sala: this.editForm.get(['sala'])!.value,
     };
   }
 

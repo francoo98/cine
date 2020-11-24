@@ -20,8 +20,8 @@
       "fechaFin": "Fecha Fin",
       "hora": "Hora",
       "estado": "Estado",
-      "sala": "Sala",
-      "pelicula": "Pelicula"
+      "pelicula": "Pelicula",
+      "sala": "Sala"
     }
   }
 }

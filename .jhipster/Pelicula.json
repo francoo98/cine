@@ -3,10 +3,11 @@
   "fields": [
     {
       "fieldName": "nombre",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "descriptcion",
+      "fieldName": "descripcion",
       "fieldType": "String"
     },
     {
@@ -30,15 +31,18 @@
     },
     {
       "fieldName": "estado",
-      "fieldType": "Boolean"
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "fechaInicio",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "fechaFin",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [],

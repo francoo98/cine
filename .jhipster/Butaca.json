@@ -3,15 +3,22 @@
   "fields": [
     {
       "fieldName": "fechaDeVenta",
-      "fieldType": "Instant"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "fila",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "10",
+      "fieldValidateRulesMax": "15"
     },
     {
       "fieldName": "asiento",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "10",
+      "fieldValidateRulesMax": "15"
     }
   ],
   "relationships": [
@@ -19,6 +26,7 @@
       "relationshipType": "many-to-one",
       "otherEntityName": "proyeccion",
       "otherEntityRelationshipName": "butaca",
+      "relationshipValidateRules": "required",
       "relationshipName": "proyeccion",
       "otherEntityField": "id"
     }

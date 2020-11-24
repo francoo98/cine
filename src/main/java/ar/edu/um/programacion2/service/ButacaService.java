@@ -32,10 +32,10 @@ public class ButacaService {
 	public Butaca save(Butaca butaca) throws BadRequestAlertException {
 		Proyeccion proyeccion = proyeccionRepository.findById(butaca.getProyeccion().getId()).get();
 		Pelicula pelicula = proyeccion.getPelicula();
-		Boolean isButacaBetween = isDateBetween(butaca.getFechaDeVenta(), 
+		/*Boolean isButacaBetween = isDateBetween(butaca.getFechaDeVenta(), 
 												LocalDateTime.of(pelicula.getFechaInicio(), LocalTime.MAX), 
-												LocalDateTime.of(pelicula.getFechaFin(), LocalTime.MAX));
-		if(butaca.getFechaDeVenta().isEqual(proyeccion.getHora()) || !isButacaBetween) {
+												LocalDateTime.of(pelicula.getFechaFin(), LocalTime.MAX));*/
+		if(butaca.getFechaDeVenta().isEqual(proyeccion.getHora())) {
 			throw new BadRequestAlertException("Can't make this today", ENTITY_NAME, "BadDate");
 		}
 		if(!pelicula.isEstado()) {

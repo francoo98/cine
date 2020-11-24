@@ -3,35 +3,40 @@
   "fields": [
     {
       "fieldName": "fechaInicio",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "fechaFin",
-      "fieldType": "LocalDate"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "hora",
-      "fieldType": "Instant"
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "estado",
-      "fieldType": "Boolean"
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [
     {
-      "relationshipType": "one-to-one",
-      "otherEntityName": "sala",
-      "otherEntityRelationshipName": "proyeccion",
-      "relationshipName": "sala",
-      "otherEntityField": "id",
-      "ownerSide": true
-    },
-    {
       "relationshipType": "many-to-one",
       "otherEntityName": "pelicula",
       "otherEntityRelationshipName": "proyeccion",
+      "relationshipValidateRules": "required",
       "relationshipName": "pelicula",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "sala",
+      "otherEntityRelationshipName": "proyeccion",
+      "relationshipValidateRules": "required",
+      "relationshipName": "sala",
       "otherEntityField": "id"
     }
   ],

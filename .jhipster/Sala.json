@@ -3,20 +3,28 @@
   "fields": [
     {
       "fieldName": "nombre",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "estado",
       "fieldType": "EstadosSala",
-      "fieldValues": "Habilitada,Deshabilitada,Eliminada"
+      "fieldValues": "Habilitada,Deshabilitada,Eliminada",
+      "fieldValidateRules": ["required"]
     },
     {
       "fieldName": "filas",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "10",
+      "fieldValidateRulesMax": "15"
     },
     {
       "fieldName": "asientos",
-      "fieldType": "Integer"
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMin": "10",
+      "fieldValidateRulesMax": "15"
     }
   ],
   "relationships": [],

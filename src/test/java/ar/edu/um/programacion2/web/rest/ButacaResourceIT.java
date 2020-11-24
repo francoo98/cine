@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -32,8 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class ButacaResourceIT {
 
-	private static final LocalDateTime DEFAULT_FECHA_DE_VENTA = LocalDateTime.of(2020, 1, 1, 12, 0);
-	private static final LocalDateTime UPDATED_FECHA_DE_VENTA = LocalDateTime.of(2020, 1, 5, 16, 30);
+	private static final LocalDate DEFAULT_FECHA_DE_VENTA = LocalDate.of(2020, 4, 1);
+	private static final LocalDate UPDATED_FECHA_DE_VENTA = LocalDate.of(2020, 8, 5);
 
 	private static final Integer DEFAULT_FILA = 1;
 	private static final Integer UPDATED_FILA = 2;

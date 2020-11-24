@@ -33,7 +33,7 @@
             <tbody>
                 <tr *ngFor="let butaca of butacas ;trackBy: trackId">
                     <td><a [routerLink]="['/butaca', butaca.id, 'view']">{{ butaca.id }}</a></td>
-                    <td>{{ butaca.fechaDeVenta | date:'medium' }}</td>
+                    <td>{{ butaca.fechaDeVenta | date:'mediumDate' }}</td>
                     <td>{{ butaca.fila }}</td>
                     <td>{{ butaca.asiento }}</td>
                     <td>

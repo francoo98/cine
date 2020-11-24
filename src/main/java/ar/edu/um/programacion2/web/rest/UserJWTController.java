@@ -24,48 +24,47 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 public class UserJWTController {
 
-	private final TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
 
-	private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
-	public UserJWTController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
-		this.tokenProvider = tokenProvider;
-		this.authenticationManagerBuilder = authenticationManagerBuilder;
-	}
+    public UserJWTController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder) {
+        this.tokenProvider = tokenProvider;
+        this.authenticationManagerBuilder = authenticationManagerBuilder;
+    }
 
-	@PostMapping("/authenticate")
-	public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginVM loginVM) {
+    @PostMapping("/authenticate")
+    public ResponseEntity<JWTToken> authorize(@Valid @RequestBody LoginVM loginVM) {
 
-		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-				loginVM.getUsername(), loginVM.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken =
+            new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword());
 
-		Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-		boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
-		String jwt = tokenProvider.createToken(authentication, rememberMe);
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-		return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
-	}
+        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        boolean rememberMe = (loginVM.isRememberMe() == null) ? false : loginVM.isRememberMe();
+        String jwt = tokenProvider.createToken(authentication, rememberMe);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+        return new ResponseEntity<>(new JWTToken(jwt), httpHeaders, HttpStatus.OK);
+    }
+    /**
+     * Object to return as body in JWT Authentication.
+     */
+    static class JWTToken {
 
-	/**
-	 * Object to return as body in JWT Authentication.
-	 */
-	static class JWTToken {
+        private String idToken;
 
-		private String idToken;
+        JWTToken(String idToken) {
+            this.idToken = idToken;
+        }
 
-		JWTToken(String idToken) {
-			this.idToken = idToken;
-		}
+        @JsonProperty("id_token")
+        String getIdToken() {
+            return idToken;
+        }
 
-		@JsonProperty("id_token")
-		String getIdToken() {
-			return idToken;
-		}
-
-		void setIdToken(String idToken) {
-			this.idToken = idToken;
-		}
-	}
+        void setIdToken(String idToken) {
+            this.idToken = idToken;
+        }
+    }
 }

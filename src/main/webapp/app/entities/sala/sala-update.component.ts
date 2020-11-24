@@ -17,10 +17,10 @@ export class SalaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    nombre: [],
-    estado: [],
-    filas: [],
-    asientos: [],
+    nombre: [null, [Validators.required]],
+    estado: [null, [Validators.required]],
+    filas: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    asientos: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
   });
 
   constructor(protected salaService: SalaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}

@@ -17,9 +17,9 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="nombre" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
-            <column name="descriptcion" type="varchar(255)">
+            <column name="descripcion" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="detalle" type="varchar(255)">
@@ -35,13 +35,13 @@
                 <constraints nullable="true" />
             </column>
             <column name="estado" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="fecha_inicio" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <column name="fecha_fin" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -67,7 +67,7 @@
                   tableName="pelicula">
             <column name="id" type="numeric"/>
             <column name="nombre" type="string"/>
-            <column name="descriptcion" type="string"/>
+            <column name="descripcion" type="string"/>
             <column name="detalle" type="string"/>
             <column name="duracion" type="numeric"/>
             <column name="genero" type="string"/>

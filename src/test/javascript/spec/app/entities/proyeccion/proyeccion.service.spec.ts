@@ -1,7 +1,7 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import * as moment from 'moment';
-import { DATE_FORMAT, DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
+import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { ProyeccionService } from 'app/entities/proyeccion/proyeccion.service';
 import { IProyeccion, Proyeccion } from 'app/shared/model/proyeccion.model';
 
@@ -33,7 +33,7 @@ describe('Service Tests', () => {
           {
             fechaInicio: currentDate.format(DATE_FORMAT),
             fechaFin: currentDate.format(DATE_FORMAT),
-            hora: currentDate.format(DATE_TIME_FORMAT),
+            hora: currentDate.format(DATE_FORMAT),
           },
           elemDefault
         );
@@ -51,7 +51,7 @@ describe('Service Tests', () => {
             id: 0,
             fechaInicio: currentDate.format(DATE_FORMAT),
             fechaFin: currentDate.format(DATE_FORMAT),
-            hora: currentDate.format(DATE_TIME_FORMAT),
+            hora: currentDate.format(DATE_FORMAT),
           },
           elemDefault
         );
@@ -77,7 +77,7 @@ describe('Service Tests', () => {
           {
             fechaInicio: currentDate.format(DATE_FORMAT),
             fechaFin: currentDate.format(DATE_FORMAT),
-            hora: currentDate.format(DATE_TIME_FORMAT),
+            hora: currentDate.format(DATE_FORMAT),
             estado: true,
           },
           elemDefault
@@ -104,7 +104,7 @@ describe('Service Tests', () => {
           {
             fechaInicio: currentDate.format(DATE_FORMAT),
             fechaFin: currentDate.format(DATE_FORMAT),
-            hora: currentDate.format(DATE_TIME_FORMAT),
+            hora: currentDate.format(DATE_FORMAT),
             estado: true,
           },
           elemDefault

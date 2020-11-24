@@ -24,7 +24,7 @@
                 <tr>
                     <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.pelicula.nombre">Nombre</span></th>
-                    <th scope="col" ><span jhiTranslate="cineApp.pelicula.descriptcion">Descriptcion</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.pelicula.descripcion">Descripcion</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.pelicula.detalle">Detalle</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.pelicula.duracion">Duracion</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.pelicula.genero">Genero</span></th>
@@ -39,7 +39,7 @@
                 <tr *ngFor="let pelicula of peliculas ;trackBy: trackId">
                     <td><a [routerLink]="['/pelicula', pelicula.id, 'view']">{{ pelicula.id }}</a></td>
                     <td>{{ pelicula.nombre }}</td>
-                    <td>{{ pelicula.descriptcion }}</td>
+                    <td>{{ pelicula.descripcion }}</td>
                     <td>{{ pelicula.detalle }}</td>
                     <td>{{ pelicula.duracion }}</td>
                     <td>{{ pelicula.genero }}</td>

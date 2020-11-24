@@ -19,15 +19,15 @@ export class PeliculaUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    nombre: [],
-    descriptcion: [],
+    nombre: [null, [Validators.required]],
+    descripcion: [],
     detalle: [],
     duracion: [null, [Validators.min(0), Validators.max(400)]],
     genero: [],
     clasificacion: [],
-    estado: [],
-    fechaInicio: [],
-    fechaFin: [],
+    estado: [null, [Validators.required]],
+    fechaInicio: [null, [Validators.required]],
+    fechaFin: [null, [Validators.required]],
   });
 
   constructor(protected peliculaService: PeliculaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -42,7 +42,7 @@ export class PeliculaUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: pelicula.id,
       nombre: pelicula.nombre,
-      descriptcion: pelicula.descriptcion,
+      descripcion: pelicula.descripcion,
       detalle: pelicula.detalle,
       duracion: pelicula.duracion,
       genero: pelicula.genero,
@@ -72,7 +72,7 @@ export class PeliculaUpdateComponent implements OnInit {
       ...new Pelicula(),
       id: this.editForm.get(['id'])!.value,
       nombre: this.editForm.get(['nombre'])!.value,
-      descriptcion: this.editForm.get(['descriptcion'])!.value,
+      descripcion: this.editForm.get(['descripcion'])!.value,
       detalle: this.editForm.get(['detalle'])!.value,
       duracion: this.editForm.get(['duracion'])!.value,
       genero: this.editForm.get(['genero'])!.value,
