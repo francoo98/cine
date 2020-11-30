@@ -4,6 +4,8 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 
 import { IProyeccion, Proyeccion } from 'app/shared/model/proyeccion.model';
 import { ProyeccionService } from './proyeccion.service';
@@ -24,7 +26,6 @@ export class ProyeccionUpdateComponent implements OnInit {
   salas: ISala[] = [];
   fechaInicioDp: any;
   fechaFinDp: any;
-  horaDp: any;
 
   editForm = this.fb.group({
     id: [],
@@ -46,6 +47,11 @@ export class ProyeccionUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ proyeccion }) => {
+      if (!proyeccion.id) {
+        const today = moment().startOf('day');
+        proyeccion.hora = today;
+      }
+
       this.updateForm(proyeccion);
 
       this.peliculaService.query().subscribe((res: HttpResponse<IPelicula[]>) => (this.peliculas = res.body || []));
@@ -59,7 +65,7 @@ export class ProyeccionUpdateComponent implements OnInit {
       id: proyeccion.id,
       fechaInicio: proyeccion.fechaInicio,
       fechaFin: proyeccion.fechaFin,
-      hora: proyeccion.hora,
+      hora: proyeccion.hora ? proyeccion.hora.format(DATE_TIME_FORMAT) : null,
       estado: proyeccion.estado,
       pelicula: proyeccion.pelicula,
       sala: proyeccion.sala,
@@ -86,7 +92,7 @@ export class ProyeccionUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       fechaInicio: this.editForm.get(['fechaInicio'])!.value,
       fechaFin: this.editForm.get(['fechaFin'])!.value,
-      hora: this.editForm.get(['hora'])!.value,
+      hora: this.editForm.get(['hora'])!.value ? moment(this.editForm.get(['hora'])!.value, DATE_TIME_FORMAT) : undefined,
       estado: this.editForm.get(['estado'])!.value,
       pelicula: this.editForm.get(['pelicula'])!.value,
       sala: this.editForm.get(['sala'])!.value,

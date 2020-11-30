@@ -53,7 +53,7 @@ export class ProyeccionService {
     const copy: IProyeccion = Object.assign({}, proyeccion, {
       fechaInicio: proyeccion.fechaInicio && proyeccion.fechaInicio.isValid() ? proyeccion.fechaInicio.format(DATE_FORMAT) : undefined,
       fechaFin: proyeccion.fechaFin && proyeccion.fechaFin.isValid() ? proyeccion.fechaFin.format(DATE_FORMAT) : undefined,
-      hora: proyeccion.hora && proyeccion.hora.isValid() ? proyeccion.hora.format(DATE_FORMAT) : undefined,
+      hora: proyeccion.hora && proyeccion.hora.isValid() ? proyeccion.hora.toJSON() : undefined,
     });
     return copy;
   }

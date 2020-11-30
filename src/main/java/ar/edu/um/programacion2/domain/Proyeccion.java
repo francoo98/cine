@@ -8,8 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 /**
  * A Proyeccion.
@@ -35,7 +35,7 @@ public class Proyeccion implements Serializable {
 
     @NotNull
     @Column(name = "hora", nullable = false)
-    private LocalDateTime hora;
+    private Instant hora;
 
     @NotNull
     @Column(name = "estado", nullable = false)
@@ -86,16 +86,16 @@ public class Proyeccion implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    public LocalDateTime getHora() {
+    public Instant getHora() {
         return hora;
     }
 
-    public Proyeccion hora(LocalDateTime hora) {
+    public Proyeccion hora(Instant hora) {
         this.hora = hora;
         return this;
     }
 
-    public void setHora(LocalDateTime hora) {
+    public void setHora(Instant hora) {
         this.hora = hora;
     }
 

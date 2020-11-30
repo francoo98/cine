@@ -1,7 +1,9 @@
 package ar.edu.um.programacion2.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +37,7 @@ public class ButacaService {
 		/*Boolean isButacaBetween = isDateBetween(butaca.getFechaDeVenta(), 
 												LocalDateTime.of(pelicula.getFechaInicio(), LocalTime.MAX), 
 												LocalDateTime.of(pelicula.getFechaFin(), LocalTime.MAX));*/
-		if(butaca.getFechaDeVenta().isEqual(proyeccion.getHora())) {
+		if(butaca.getFechaDeVenta().isEqual(LocalDate.ofInstant(proyeccion.getHora(), ZoneId.systemDefault()))) {
 			throw new BadRequestAlertException("Can't make this today", ENTITY_NAME, "BadDate");
 		}
 		if(!pelicula.isEstado()) {

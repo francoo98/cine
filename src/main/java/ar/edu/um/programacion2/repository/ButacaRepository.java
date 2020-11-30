@@ -19,9 +19,9 @@ public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 	
 	int countButacaByProyeccion(Proyeccion proyeccion);
 
-	List<Butaca> findByfechaDeVentaBetween(LocalDateTime inicio, LocalDateTime fin);
+	List<Butaca> findByfechaDeVentaBetween(LocalDate inicio, LocalDate fin);
 	
-	List<Butaca> findByfechaDeVentaBetweenAndProyeccionId(LocalDateTime inicio, LocalDateTime fin, Long id_proyeccion);
+	List<Butaca> findByfechaDeVentaBetweenAndProyeccionId(LocalDate inicio, LocalDate fin, Long id_proyeccion);
 	
 	List<Butaca> findByProyeccionEstadoTrue();
 }

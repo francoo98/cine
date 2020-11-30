@@ -22,6 +22,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 /**
  * REST controller for managing {@link ar.edu.um.programacion2.domain.Butaca}.
  */
@@ -57,7 +59,7 @@ public class ButacaResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PostMapping("/butacas")
-	public ResponseEntity<Butaca> createButaca(@RequestBody Butaca butaca) throws URISyntaxException {
+	public ResponseEntity<Butaca> createButaca(@RequestBody @Valid Butaca butaca) throws URISyntaxException {
 		log.debug("REST request to save Butaca : {}", butaca);
 		if (butaca.getId() != null) {
 			throw new BadRequestAlertException("A new butaca cannot already have an ID", ENTITY_NAME, "idexists");
@@ -84,7 +86,7 @@ public class ButacaResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PutMapping("/butacas")
-	public ResponseEntity<Butaca> updateButaca(@RequestBody Butaca butaca) throws URISyntaxException {
+	public ResponseEntity<Butaca> updateButaca(@RequestBody @Valid Butaca butaca) throws URISyntaxException {
 		log.debug("REST request to update Butaca : {}", butaca);
 		if (butaca.getId() == null) {
 			throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

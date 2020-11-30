@@ -37,7 +37,7 @@
                     <td><a [routerLink]="['/proyeccion', proyeccion.id, 'view']">{{ proyeccion.id }}</a></td>
                     <td>{{ proyeccion.fechaInicio | date:'mediumDate' }}</td>
                     <td>{{ proyeccion.fechaFin | date:'mediumDate' }}</td>
-                    <td>{{ proyeccion.hora | date:'mediumDate' }}</td>
+                    <td>{{ proyeccion.hora | date:'medium' }}</td>
                     <td>{{ proyeccion.estado }}</td>
                     <td>
                         <div *ngIf="proyeccion.pelicula">

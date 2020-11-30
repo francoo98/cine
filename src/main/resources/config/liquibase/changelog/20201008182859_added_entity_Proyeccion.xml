@@ -22,7 +22,7 @@
             <column name="fecha_fin" type="date">
                 <constraints nullable="false" />
             </column>
-            <column name="hora" type="date">
+            <column name="hora" type="datetime">
                 <constraints nullable="false" />
             </column>
             <column name="estado" type="boolean">
@@ -36,6 +36,7 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="proyeccion" columnName="hora" columnDataType="datetime"/>
     </changeSet>
 
     <changeSet id="20201008182859-1-relations" author="jhipster">
@@ -59,7 +60,7 @@
             <column name="id" type="numeric"/>
             <column name="fecha_inicio" type="date"/>
             <column name="fecha_fin" type="date"/>
-            <column name="hora" type="date"/>
+            <column name="hora" type="datetime"/>
             <column name="estado" type="boolean"/>
             <column name="pelicula_id" type="numeric"/>
             <column name="sala_id" type="numeric"/>

@@ -38,16 +38,14 @@ public class ReporteResource {
 
 	@GetMapping("/butacas_vendidas/{inicio}/{fin}")
 	public List<Butaca> getButacasVendidasBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
-		return butacaRepository.findByfechaDeVentaBetween(LocalDateTime.of(inicio, LocalTime.of(0, 0)), LocalDateTime.of(fin, LocalTime.of(23, 59)));
+		return butacaRepository.findByfechaDeVentaBetween(inicio, fin);
 	}
 
 	@GetMapping("/butacas_vendidas/{id_proyeccion}/{inicio}/{fin}")
 	public List<Butaca> getButacasVendidasDeProyeccionBetween(@PathVariable Long id_proyeccion,
 															  @PathVariable LocalDate inicio, 
 															  @PathVariable LocalDate fin) {
-		return butacaRepository.findByfechaDeVentaBetweenAndProyeccionId(LocalDateTime.of(inicio, LocalTime.of(0, 0)),
-																	   LocalDateTime.of(fin, LocalTime.of(23, 59)), 
-																	   id_proyeccion);
+		return butacaRepository.findByfechaDeVentaBetweenAndProyeccionId(inicio, fin, id_proyeccion);
 	}
 
 	@GetMapping("/masvendidas/{inicio}/{fin}")

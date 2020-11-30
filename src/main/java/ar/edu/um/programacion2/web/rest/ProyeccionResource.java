@@ -23,6 +23,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 /**
  * REST controller for managing
  * {@link ar.edu.um.programacion2.domain.Proyeccion}.
@@ -60,10 +62,10 @@ public class ProyeccionResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PostMapping("/proyeccions")
-	public ResponseEntity<Proyeccion> createProyeccion(@RequestBody Proyeccion proyeccion) throws URISyntaxException {
+	public ResponseEntity<Proyeccion> createProyeccion(@RequestBody @Valid Proyeccion proyeccion) throws URISyntaxException {
 		log.debug("REST request to save Proyeccion : {}", proyeccion);
 		if (proyeccion.getId() != null || !salaRepository.existsById(proyeccion.getSala().getId()) || 
-			!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
+				!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
 			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Idexists or peliculaid or salaid dosnt't");
 		}
 		Proyeccion result = proyeccionRepository.save(proyeccion);
@@ -85,7 +87,7 @@ public class ProyeccionResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PutMapping("/proyeccions")
-	public ResponseEntity<Proyeccion> updateProyeccion(@RequestBody Proyeccion proyeccion) throws URISyntaxException {
+	public ResponseEntity<Proyeccion> updateProyeccion(@RequestBody @Valid Proyeccion proyeccion) throws URISyntaxException {
 		log.debug("REST request to update Proyeccion : {}", proyeccion);
 		if (proyeccion.getId() == null) {
 			throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

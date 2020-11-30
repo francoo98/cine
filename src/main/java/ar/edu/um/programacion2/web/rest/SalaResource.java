@@ -20,6 +20,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 /**
  * REST controller for managing {@link ar.edu.um.programacion2.domain.Sala}.
  */
@@ -51,7 +53,7 @@ public class SalaResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PostMapping("/salas")
-	public ResponseEntity<Sala> createSala(@RequestBody Sala sala) throws URISyntaxException {
+	public ResponseEntity<Sala> createSala(@RequestBody @Valid Sala sala) throws URISyntaxException {
 		log.debug("REST request to save Sala : {}", sala);
 		if (sala.getId() != null) {
 			throw new BadRequestAlertException("A new sala cannot already have an ID", ENTITY_NAME, "idexists");
@@ -74,7 +76,7 @@ public class SalaResource {
 	 * @throws URISyntaxException if the Location URI syntax is incorrect.
 	 */
 	@PutMapping("/salas")
-	public ResponseEntity<Sala> updateSala(@RequestBody Sala sala) throws URISyntaxException {
+	public ResponseEntity<Sala> updateSala(@RequestBody @Valid Sala sala) throws URISyntaxException {
 		log.debug("REST request to update Sala : {}", sala);
 		if (sala.getId() == null) {
 			throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

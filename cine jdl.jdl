@@ -28,7 +28,7 @@ entity Proyeccion {
 	id Long unique required
     fechaInicio LocalDate required
     fechaFin LocalDate required
-    hora LocalDate required
+    hora Instant required
     estado Boolean required
 }
 
