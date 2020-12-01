@@ -25,7 +25,10 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 
 	List<Proyeccion> findProyeccionsByFechaFinGreaterThanEqualAndFechaInicioLessThanEqualAndEstadoTrue(LocalDate inicio,
 																									   LocalDate fin);
-
+	
+	@Query("select p from Proyeccion p where curdate() between fechaInicio and fechaFin and estado = True")
+	List<Proyeccion> findProyeccionsActiveToday();
+	
 	@Query("select p from Proyeccion p where fechaInicio <= ?1 and fechaFin >= ?1")
 	List<Proyeccion> findAllByFechaInicioBeforeAndFechaFinAfterAndEstadoTrue(LocalDate hoy);
 
