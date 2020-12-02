@@ -1,5 +1,6 @@
 package ar.edu.um.programacion2.web.rest;
 
+import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,9 +64,14 @@ public class ProyeccionResource {
 	@PostMapping("/proyeccions")
 	public ResponseEntity<Proyeccion> createProyeccion(@RequestBody @Valid Proyeccion proyeccion) throws URISyntaxException {
 		log.debug("REST request to save Proyeccion : {}", proyeccion);
-		if (proyeccion.getId() != null || !salaRepository.existsById(proyeccion.getSala().getId()) || 
-				!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
-			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Idexists or peliculaid or salaid dosnt't");
+		if (proyeccion.getId() != null) {
+			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Idexists or peliculaid");
+		}
+		if(!salaRepository.existsById(proyeccion.getSala().getId())) {
+			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Sala non-existent");
+		}
+		if(!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
+			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Pelicula non-existent");
 		}
 		Proyeccion result = proyeccionRepository.save(proyeccion);
 		return ResponseEntity

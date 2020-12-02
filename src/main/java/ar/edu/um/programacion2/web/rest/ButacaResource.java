@@ -1,7 +1,10 @@
 package ar.edu.um.programacion2.web.rest;
 
 import ar.edu.um.programacion2.domain.Butaca;
+import ar.edu.um.programacion2.domain.Pelicula;
+import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.ButacaRepository;
+import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.service.ButacaService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
@@ -19,6 +22,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,14 +44,16 @@ public class ButacaResource {
 	
 	private final ButacaRepository butacaRepository;
 	private final ProyeccionRepository proyeccionRepository;
+	private final PeliculaRepository peliculaRepository;
 	
 	private final ButacaService butacaService;
 
 	public ButacaResource(ButacaRepository butacaRepository, ProyeccionRepository proyeccionRepository,
-						  ButacaService butacaService) {
+						  ButacaService butacaService, PeliculaRepository peliculaRepository) {
 		this.butacaRepository = butacaRepository;
 		this.proyeccionRepository = proyeccionRepository;
 		this.butacaService = butacaService;
+		this.peliculaRepository = peliculaRepository;
 	}
 
 	/**
@@ -61,11 +68,20 @@ public class ButacaResource {
 	@PostMapping("/butacas")
 	public ResponseEntity<Butaca> createButaca(@RequestBody @Valid Butaca butaca) throws URISyntaxException {
 		log.debug("REST request to save Butaca : {}", butaca);
+		Proyeccion proyeccion;
+		Pelicula pelicula;
+		LocalDate fechaProyeccion;
 		if (butaca.getId() != null) {
 			throw new BadRequestAlertException("A new butaca cannot already have an ID", ENTITY_NAME, "idexists");
 		}
 		if(!proyeccionRepository.existsById(butaca.getProyeccion().getId())) {
 			throw new BadRequestAlertException("Proyeccion id doesn't exist", ENTITY_NAME, "proyeccionid");
+		}
+		proyeccion = proyeccionRepository.findById(butaca.getProyeccion().getId()).get();
+		pelicula = proyeccion.getPelicula();
+		fechaProyeccion = LocalDate.ofInstant(proyeccion.getHora(), ZoneId.systemDefault());
+		if(!(pelicula.getFechaInicio().isBefore(fechaProyeccion) && pelicula.getFechaFin().isAfter(fechaProyeccion))) {
+			throw new BadRequestAlertException("Pelicula is not active", ENTITY_NAME, "non-activepelicula");
 		}
 		Butaca result = butacaService.save(butaca);
 		return ResponseEntity
