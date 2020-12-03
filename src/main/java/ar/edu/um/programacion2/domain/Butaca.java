@@ -10,6 +10,8 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import ar.edu.um.programacion2.domain.enumeration.EstadosButaca;
+
 /**
  * A Butaca.
  */
@@ -39,6 +41,11 @@ public class Butaca implements Serializable {
     @Max(value = 15)
     @Column(name = "asiento", nullable = false)
     private Integer asiento;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "estado", nullable = false)
+    private EstadosButaca estado;
 
     @ManyToOne(optional = false)
     @NotNull
@@ -93,6 +100,19 @@ public class Butaca implements Serializable {
         this.asiento = asiento;
     }
 
+    public EstadosButaca getEstado() {
+        return estado;
+    }
+
+    public Butaca estado(EstadosButaca estado) {
+        this.estado = estado;
+        return this;
+    }
+
+    public void setEstado(EstadosButaca estado) {
+        this.estado = estado;
+    }
+
     public Proyeccion getProyeccion() {
         return proyeccion;
     }
@@ -131,6 +151,7 @@ public class Butaca implements Serializable {
             ", fechaDeVenta='" + getFechaDeVenta() + "'" +
             ", fila=" + getFila() +
             ", asiento=" + getAsiento() +
+            ", estado='" + getEstado() + "'" +
             "}";
     }
 }

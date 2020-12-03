@@ -19,6 +19,12 @@
       "fieldValidateRules": ["required", "min", "max"],
       "fieldValidateRulesMin": "10",
       "fieldValidateRulesMax": "15"
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadosButaca",
+      "fieldValues": "Reservada,Vendida",
+      "fieldValidateRules": ["required"]
     }
   ],
   "relationships": [

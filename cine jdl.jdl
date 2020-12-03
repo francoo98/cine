@@ -1,43 +1,43 @@
 
 application {
   config {
-    baseName cine,
-    applicationType monolith,
-    packageName ar.edu.um.programacion2,
-    authenticationType jwt,
-    prodDatabaseType mysql,
-    clientFramework angular
+    	baseName cine,
+    	applicationType monolith,
+    	packageName ar.edu.um.programacion2,
+    	authenticationType jwt,
+    	prodDatabaseType mysql,
+    	clientFramework angular
   }
-  entities *
+	entities *
 }
 
 entity Pelicula {
 	id Long unique required
-    nombre String required
-    descripcion String
-    detalle String
-    duracion Integer min(0) max(400)
-    genero String
-    clasificacion String
-    estado Boolean required
-    fechaInicio LocalDate required
-    fechaFin LocalDate required
+    	nombre String required
+    	descripcion String
+    	detalle String
+    	duracion Integer min(0) max(400)
+    	genero String
+    	clasificacion String
+    	estado Boolean required
+    	fechaInicio LocalDate required
+    	fechaFin LocalDate required
 }
 
 entity Proyeccion {
 	id Long unique required
-    fechaInicio LocalDate required
-    fechaFin LocalDate required
-    hora Instant required
-    estado Boolean required
+    	fechaInicio LocalDate required
+    	fechaFin LocalDate required
+    	hora Instant required
+    	estado Boolean required
 }
 
 entity Sala {
 	id Long unique required
-    nombre String required
-    estado EstadosSala required
-    filas Integer required min(10) max(15)
-    asientos Integer required min(10) max(15)
+	nombre String required
+    	estado EstadosSala required
+    	filas Integer required min(10) max(15)
+    	asientos Integer required min(10) max(15)
 }
 
 entity Butaca {
@@ -45,6 +45,7 @@ entity Butaca {
 	fechaDeVenta LocalDate required 
 	fila Integer required min(10) max(15)
   	asiento Integer required min(10) max(15)
+	estado EstadosButaca required
 }
 
 relationship ManyToOne {
@@ -61,7 +62,12 @@ relationship ManyToOne {
 
 enum EstadosSala {
 	Habilitada
-    Deshabilitada
-    Eliminada
+	Deshabilitada
+	Eliminada
+}
+
+enum EstadosButaca {
+	Reservada
+	Vendida
 }
     

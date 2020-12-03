@@ -20,6 +20,10 @@
                 <dd>
                     <span>{{ butaca.asiento }}</span>
                 </dd>
+                <dt><span jhiTranslate="cineApp.butaca.estado">Estado</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'cineApp.EstadosButaca.' + butaca.estado }}">{{ butaca.estado }}</span>
+                </dd>
                 <dt><span jhiTranslate="cineApp.butaca.proyeccion">Proyeccion</span></dt>
                 <dd>
                     <div *ngIf="butaca.proyeccion">

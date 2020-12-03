@@ -76,6 +76,20 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="cineApp.butaca.estado" for="field_estado">Estado</label>
+                    <select class="form-control" name="estado" formControlName="estado" id="field_estado">
+                        <option value="Reservada">{{ 'cineApp.EstadosButaca.Reservada' | translate }}</option>
+                        <option value="Vendida">{{ 'cineApp.EstadosButaca.Vendida' | translate }}</option>
+                    </select>
+                    <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="cineApp.butaca.proyeccion" for="field_proyeccion">Proyeccion</label>
                     <select class="form-control" id="field_proyeccion" name="proyeccion" formControlName="proyeccion">
                         <option *ngIf="!editForm.get('proyeccion')!.value" [ngValue]="null" selected></option>

@@ -24,6 +24,7 @@ export class ButacaUpdateComponent implements OnInit {
     fechaDeVenta: [null, [Validators.required]],
     fila: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
     asiento: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    estado: [null, [Validators.required]],
     proyeccion: [null, Validators.required],
   });
 
@@ -48,6 +49,7 @@ export class ButacaUpdateComponent implements OnInit {
       fechaDeVenta: butaca.fechaDeVenta,
       fila: butaca.fila,
       asiento: butaca.asiento,
+      estado: butaca.estado,
       proyeccion: butaca.proyeccion,
     });
   }
@@ -73,6 +75,7 @@ export class ButacaUpdateComponent implements OnInit {
       fechaDeVenta: this.editForm.get(['fechaDeVenta'])!.value,
       fila: this.editForm.get(['fila'])!.value,
       asiento: this.editForm.get(['asiento'])!.value,
+      estado: this.editForm.get(['estado'])!.value,
       proyeccion: this.editForm.get(['proyeccion'])!.value,
     };
   }

@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { DATE_FORMAT } from 'app/shared/constants/input.constants';
 import { ButacaService } from 'app/entities/butaca/butaca.service';
 import { IButaca, Butaca } from 'app/shared/model/butaca.model';
+import { EstadosButaca } from 'app/shared/model/enumerations/estados-butaca.model';
 
 describe('Service Tests', () => {
   describe('Butaca Service', () => {
@@ -24,7 +25,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Butaca(0, currentDate, 0, 0);
+      elemDefault = new Butaca(0, currentDate, 0, 0, EstadosButaca.Reservada);
     });
 
     describe('Service methods', () => {
@@ -72,6 +73,7 @@ describe('Service Tests', () => {
             fechaDeVenta: currentDate.format(DATE_FORMAT),
             fila: 1,
             asiento: 1,
+            estado: 'BBBBBB',
           },
           elemDefault
         );
@@ -96,6 +98,7 @@ describe('Service Tests', () => {
             fechaDeVenta: currentDate.format(DATE_FORMAT),
             fila: 1,
             asiento: 1,
+            estado: 'BBBBBB',
           },
           elemDefault
         );

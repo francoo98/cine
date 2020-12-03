@@ -1,0 +1,9 @@
+{
+  "cineApp": {
+    "EstadosButaca": {
+      "null": "",
+      "Reservada": "Reservada",
+      "Vendida": "Vendida"
+    }
+  }
+}

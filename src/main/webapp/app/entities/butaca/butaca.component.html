@@ -26,6 +26,7 @@
                     <th scope="col" ><span jhiTranslate="cineApp.butaca.fechaDeVenta">Fecha De Venta</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.butaca.fila">Fila</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.butaca.asiento">Asiento</span></th>
+                    <th scope="col" ><span jhiTranslate="cineApp.butaca.estado">Estado</span></th>
                     <th scope="col" ><span jhiTranslate="cineApp.butaca.proyeccion">Proyeccion</span></th>
                     <th scope="col"></th>
                 </tr>
@@ -36,6 +37,7 @@
                     <td>{{ butaca.fechaDeVenta | date:'mediumDate' }}</td>
                     <td>{{ butaca.fila }}</td>
                     <td>{{ butaca.asiento }}</td>
+                    <td jhiTranslate="{{ 'cineApp.EstadosButaca.' + butaca.estado }}">{{ butaca.estado }}</td>
                     <td>
                         <div *ngIf="butaca.proyeccion">
                             <a [routerLink]="['/proyeccion', butaca.proyeccion?.id, 'view']" >{{ butaca.proyeccion?.id }}</a>
