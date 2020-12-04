@@ -97,6 +97,12 @@ public class ProyeccionResource {
 		if (proyeccion.getId() == null) {
 			throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
 		}
+		if(!peliculaRepository.existsById(proyeccion.getPelicula().getId())) { 
+			throw new BadRequestAlertException("Invalid pelicula", ENTITY_NAME, "pelicula non-existent");
+		}
+		if(!salaRepository.existsById(proyeccion.getSala().getId())) {
+			throw new BadRequestAlertException("Invalid sala", ENTITY_NAME, "sala non-existent");
+		}
 		Proyeccion result = proyeccionRepository.save(proyeccion);
 		return ResponseEntity.ok().headers(
 				HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, proyeccion.getId().toString()))
