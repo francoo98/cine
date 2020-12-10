@@ -24,4 +24,8 @@ public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 	List<Butaca> findByfechaDeVentaBetweenAndProyeccionId(LocalDate inicio, LocalDate fin, Long id_proyeccion);
 	
 	List<Butaca> findByProyeccionEstadoTrue();
+
+	List<Butaca> findByProyeccion(Proyeccion proyeccion);
+
+	boolean existsByProyeccionAndFilaAndAsiento(Proyeccion proyeccion, int fila, int asiento);
 }

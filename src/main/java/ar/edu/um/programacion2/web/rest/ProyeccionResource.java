@@ -5,6 +5,8 @@ import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.repository.SalaRepository;
+import ar.edu.um.programacion2.service.ProyeccionService;
+import ar.edu.um.programacion2.service.dto.ProyeccionEstadoButacasDTO;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -44,12 +46,15 @@ public class ProyeccionResource {
 	private final SalaRepository salaRepository;
 	private final PeliculaRepository peliculaRepository;
 	
+	private final ProyeccionService proyeccionService;
+	
 
 	public ProyeccionResource(ProyeccionRepository proyeccionRepository, SalaRepository salaRepository,
-								PeliculaRepository peliculaRepository) {
+								PeliculaRepository peliculaRepository, ProyeccionService proyeccionService) {
 		this.proyeccionRepository = proyeccionRepository;
 		this.salaRepository = salaRepository;
 		this.peliculaRepository = peliculaRepository;
+		this.proyeccionService = proyeccionService;
 	}
 
 	/**
@@ -148,6 +153,11 @@ public class ProyeccionResource {
 		/*Optional<List<Proyeccion>> proyecciones = proyeccionRepository
 				.findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(id, fecha);*/
 		return ResponseUtil.wrapOrNotFound(proyeccion);
+	}
+	
+	@GetMapping("/proyeccions/peliculas/{id}/fecha/{fecha}")
+	public List<ProyeccionEstadoButacasDTO> getProyeccionesButacas(@PathVariable Long id, @PathVariable LocalDate fecha) {
+		return this.proyeccionService.getProyeccionDePelicula(id, fecha);
 	}
 	
 	/**

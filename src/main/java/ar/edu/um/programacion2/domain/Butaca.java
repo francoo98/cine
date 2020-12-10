@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import ar.edu.um.programacion2.domain.enumeration.EstadosButaca;
+import ar.edu.um.programacion2.service.dto.ButacaEstadoDTO;
 
 /**
  * A Butaca.
@@ -48,7 +49,7 @@ public class Butaca implements Serializable {
     private EstadosButaca estado;
 
     @ManyToOne(optional = false)
-    @NotNull
+    //@NotNull
     @JsonIgnoreProperties(value = "butacas", allowSetters = true)
     private Proyeccion proyeccion;
 
@@ -154,4 +155,8 @@ public class Butaca implements Serializable {
             ", estado='" + getEstado() + "'" +
             "}";
     }
+
+	public ButacaEstadoDTO toButacaEstadoDTO() {
+		return new ButacaEstadoDTO(this.estado, this.fila, this.asiento);
+	}
 }

@@ -45,6 +45,8 @@ public class Sala implements Serializable {
     @Column(name = "asientos", nullable = false)
     private Integer asientos;
 
+    
+    
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -107,6 +109,10 @@ public class Sala implements Serializable {
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
+    public Integer getCantidadDeButacas() {
+    	return filas*asientos;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {
