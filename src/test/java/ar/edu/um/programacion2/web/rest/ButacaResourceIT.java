@@ -36,11 +36,11 @@ public class ButacaResourceIT {
     private static final LocalDate DEFAULT_FECHA_DE_VENTA = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_FECHA_DE_VENTA = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Integer DEFAULT_FILA = 10;
-    private static final Integer UPDATED_FILA = 11;
+    private static final Integer DEFAULT_FILA = 1;
+    private static final Integer UPDATED_FILA = 2;
 
-    private static final Integer DEFAULT_ASIENTO = 10;
-    private static final Integer UPDATED_ASIENTO = 11;
+    private static final Integer DEFAULT_ASIENTO = 1;
+    private static final Integer UPDATED_ASIENTO = 2;
 
     private static final EstadosButaca DEFAULT_ESTADO = EstadosButaca.Reservada;
     private static final EstadosButaca UPDATED_ESTADO = EstadosButaca.Vendida;

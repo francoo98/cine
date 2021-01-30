@@ -32,14 +32,14 @@ public class Butaca implements Serializable {
     private LocalDate fechaDeVenta;
 
     @NotNull
-    @Min(value = 10)
-    @Max(value = 15)
+    @Min(value = 1)
+    @Max(value = 10)
     @Column(name = "fila", nullable = false)
     private Integer fila;
 
     @NotNull
-    @Min(value = 10)
-    @Max(value = 15)
+    @Min(value = 1)
+    @Max(value = 10)
     @Column(name = "asiento", nullable = false)
     private Integer asiento;
 

@@ -43,8 +43,8 @@ entity Sala {
 entity Butaca {
 	id Long unique required
 	fechaDeVenta LocalDate required 
-	fila Integer required min(10) max(15)
-  	asiento Integer required min(10) max(15)
+	fila Integer required min(1) max(10)
+  	asiento Integer required min(1) max(10)
 	estado EstadosButaca required
 }
 

@@ -10,15 +10,15 @@
       "fieldName": "fila",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "10",
-      "fieldValidateRulesMax": "15"
+      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMax": "10"
     },
     {
       "fieldName": "asiento",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "10",
-      "fieldValidateRulesMax": "15"
+      "fieldValidateRulesMin": "1",
+      "fieldValidateRulesMax": "10"
     },
     {
       "fieldName": "estado",

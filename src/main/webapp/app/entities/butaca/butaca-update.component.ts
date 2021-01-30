@@ -22,8 +22,8 @@ export class ButacaUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     fechaDeVenta: [null, [Validators.required]],
-    fila: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
-    asiento: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    fila: [null, [Validators.required, Validators.min(1), Validators.max(10)]],
+    asiento: [null, [Validators.required, Validators.min(1), Validators.max(10)]],
     estado: [null, [Validators.required]],
     proyeccion: [null, Validators.required],
   });
