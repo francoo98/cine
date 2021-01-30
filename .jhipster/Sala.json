@@ -16,15 +16,15 @@
       "fieldName": "filas",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "10",
-      "fieldValidateRulesMax": "15"
+      "fieldValidateRulesMin": "7",
+      "fieldValidateRulesMax": "10"
     },
     {
       "fieldName": "asientos",
       "fieldType": "Integer",
       "fieldValidateRules": ["required", "min", "max"],
-      "fieldValidateRulesMin": "10",
-      "fieldValidateRulesMax": "15"
+      "fieldValidateRulesMin": "8",
+      "fieldValidateRulesMax": "10"
     }
   ],
   "relationships": [],

@@ -1,11 +1,11 @@
 id;nombre;estado;filas;asientos
-1;even-keeled Accountability Small;Eliminada;14;11
-2;deliver Avon Planner;Eliminada;11;14
-3;Usability;Eliminada;12;15
-4;connecting PCI bi-directional;Deshabilitada;13;14
-5;Health Bike Iowa;Eliminada;12;15
-6;Berkshire Handcrafted;Deshabilitada;10;13
-7;Managed;Deshabilitada;10;15
-8;Borders Steel;Habilitada;15;11
-9;override cyan;Eliminada;10;14
-10;CSS;Habilitada;11;10
+1;even-keeled Accountability Small;Eliminada;10;8
+2;deliver Avon Planner;Eliminada;8;10
+3;Usability;Eliminada;8;10
+4;connecting PCI bi-directional;Deshabilitada;9;10
+5;Health Bike Iowa;Eliminada;8;10
+6;Berkshire Handcrafted;Deshabilitada;7;9
+7;Managed;Deshabilitada;7;10
+8;Borders Steel;Habilitada;10;8
+9;override cyan;Eliminada;7;10
+10;CSS;Habilitada;7;8

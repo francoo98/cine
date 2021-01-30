@@ -19,8 +19,8 @@ export class SalaUpdateComponent implements OnInit {
     id: [],
     nombre: [null, [Validators.required]],
     estado: [null, [Validators.required]],
-    filas: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
-    asientos: [null, [Validators.required, Validators.min(10), Validators.max(15)]],
+    filas: [null, [Validators.required, Validators.min(7), Validators.max(10)]],
+    asientos: [null, [Validators.required, Validators.min(8), Validators.max(10)]],
   });
 
   constructor(protected salaService: SalaService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}

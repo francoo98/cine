@@ -36,8 +36,8 @@ entity Sala {
 	id Long unique required
 	nombre String required
     	estado EstadosSala required
-    	filas Integer required min(10) max(15)
-    	asientos Integer required min(10) max(15)
+    	filas Integer required min(7) max(10)
+    	asientos Integer required min(8) max(10)
 }
 
 entity Butaca {

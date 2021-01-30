@@ -36,11 +36,11 @@ public class SalaResourceIT {
     private static final EstadosSala DEFAULT_ESTADO = EstadosSala.Habilitada;
     private static final EstadosSala UPDATED_ESTADO = EstadosSala.Deshabilitada;
 
-    private static final Integer DEFAULT_FILAS = 10;
-    private static final Integer UPDATED_FILAS = 11;
+    private static final Integer DEFAULT_FILAS = 7;
+    private static final Integer UPDATED_FILAS = 8;
 
-    private static final Integer DEFAULT_ASIENTOS = 10;
-    private static final Integer UPDATED_ASIENTOS = 11;
+    private static final Integer DEFAULT_ASIENTOS = 8;
+    private static final Integer UPDATED_ASIENTOS = 9;
 
     @Autowired
     private SalaRepository salaRepository;

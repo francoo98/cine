@@ -48,12 +48,12 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('filas')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 10 }">
-                            This field should be at least 10.
+                               *ngIf="editForm.get('filas')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 7 }">
+                            This field should be at least 7.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('filas')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 15 }">
-                            This field cannot be more than 15.
+                               *ngIf="editForm.get('filas')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 10 }">
+                            This field cannot be more than 10.
                         </small>
                         <small class="form-text text-danger"
                             [hidden]="!editForm.get('filas')?.errors?.number" jhiTranslate="entity.validation.number">
@@ -72,12 +72,12 @@
                         This field is required.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('asientos')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 10 }">
-                            This field should be at least 10.
+                               *ngIf="editForm.get('asientos')?.errors?.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 8 }">
+                            This field should be at least 8.
                         </small>
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('asientos')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 15 }">
-                            This field cannot be more than 15.
+                               *ngIf="editForm.get('asientos')?.errors?.max" jhiTranslate="entity.validation.max" [translateValues]="{ max: 10 }">
+                            This field cannot be more than 10.
                         </small>
                         <small class="form-text text-danger"
                             [hidden]="!editForm.get('asientos')?.errors?.number" jhiTranslate="entity.validation.number">
