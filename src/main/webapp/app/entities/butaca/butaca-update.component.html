@@ -80,6 +80,7 @@
                     <select class="form-control" name="estado" formControlName="estado" id="field_estado">
                         <option value="Reservada">{{ 'cineApp.EstadosButaca.Reservada' | translate }}</option>
                         <option value="Vendida">{{ 'cineApp.EstadosButaca.Vendida' | translate }}</option>
+                        <option value="Libre">{{ 'cineApp.EstadosButaca.Libre' | translate }}</option>
                     </select>
                     <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
                         <small class="form-text text-danger"

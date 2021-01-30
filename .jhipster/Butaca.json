@@ -23,7 +23,7 @@
     {
       "fieldName": "estado",
       "fieldType": "EstadosButaca",
-      "fieldValues": "Reservada,Vendida",
+      "fieldValues": "Reservada,Vendida,Libre",
       "fieldValidateRules": ["required"]
     }
   ],

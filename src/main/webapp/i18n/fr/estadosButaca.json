@@ -3,7 +3,8 @@
     "EstadosButaca": {
       "null": "",
       "Reservada": "Reservada",
-      "Vendida": "Vendida"
+      "Vendida": "Vendida",
+      "Libre": "Libre"
     }
   }
 }

@@ -69,5 +69,6 @@ enum EstadosSala {
 enum EstadosButaca {
 	Reservada
 	Vendida
+	Libre
 }
     
