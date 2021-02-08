@@ -27,10 +27,12 @@ public class Pelicula implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @Column(name = "descripcion")
+    @Size(max = 400)
+    @Column(name = "descripcion", length = 400)
     private String descripcion;
 
-    @Column(name = "detalle")
+    @Size(max = 400)
+    @Column(name = "detalle", length = 400)
     private String detalle;
 
     @Min(value = 0)

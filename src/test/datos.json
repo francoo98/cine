@@ -176,12 +176,44 @@
     { "nombre": "Violeta", "estado": 0, "filas": 11, "asientos": 20 }
   ],
   "proyecciones": [
-    { "fechaInicio": "2020-01-06", "fechaFin": "2020-02-01", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
-    { "fechaInicio": "2020-02-06", "fechaFin": "2020-02-24", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
-    { "fechaInicio": "2020-09-16", "fechaFin": "2020-10-07", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
-    { "fechaInicio": "2020-05-16", "fechaFin": "2020-06-07", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
-    { "fechaInicio": "2020-03-23", "fechaFin": "2020-04-27", "hora": 0, "estado": true, "sala": {}, "pelicula": {} },
-    { "fechaInicio": "2020-12-01", "fechaFin": "2020-12-22", "hora": 0, "estado": true, "sala": {}, "pelicula": {} }
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} },
+    { "fechaInicio": "2020-01-01", "fechaFin": "2020-06-01", "hora": 1612794687, "estado": true, "sala": {}, "pelicula": {} }
   ],
-  "butacas": []
+  "butacas": [
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 3, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 4, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 5, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 3, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 4, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 4, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 5, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 6, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 7, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 3, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 4, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 4, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 5, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 6, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 7, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 8, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 2, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 3, "fechaDeVenta": "2021-02-05" },
+    { "proyeccion": {}, "estado": "Vendida", "fila": 1, "asiento": 1, "fechaDeVenta": "2021-02-05" }
+  ]
 }

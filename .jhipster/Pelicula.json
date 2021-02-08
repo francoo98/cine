@@ -8,11 +8,15 @@
     },
     {
       "fieldName": "descripcion",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "400"
     },
     {
       "fieldName": "detalle",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "400"
     },
     {
       "fieldName": "duracion",

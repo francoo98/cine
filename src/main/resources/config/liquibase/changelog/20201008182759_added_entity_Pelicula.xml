@@ -19,10 +19,10 @@
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
-            <column name="descripcion" type="varchar(255)">
+            <column name="descripcion" type="varchar(400)">
                 <constraints nullable="true" />
             </column>
-            <column name="detalle" type="varchar(255)">
+            <column name="detalle" type="varchar(400)">
                 <constraints nullable="true" />
             </column>
             <column name="duracion" type="integer">

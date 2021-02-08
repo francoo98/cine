@@ -20,8 +20,8 @@ export class PeliculaUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     nombre: [null, [Validators.required]],
-    descripcion: [],
-    detalle: [],
+    descripcion: [null, [Validators.maxLength(400)]],
+    detalle: [null, [Validators.maxLength(400)]],
     duracion: [null, [Validators.min(0), Validators.max(400)]],
     genero: [],
     clasificacion: [],

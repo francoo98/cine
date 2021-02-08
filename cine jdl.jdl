@@ -14,8 +14,8 @@ application {
 entity Pelicula {
 	id Long unique required
     	nombre String required
-    	descripcion String
-    	detalle String
+    	descripcion String maxlength(400)
+    	detalle String maxlength(400)
     	duracion Integer min(0) max(400)
     	genero String
     	clasificacion String
