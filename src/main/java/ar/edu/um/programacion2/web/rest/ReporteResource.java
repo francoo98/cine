@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ar.edu.um.programacion2.domain.Butaca;
 import ar.edu.um.programacion2.domain.Proyeccion;
+import ar.edu.um.programacion2.domain.enumeration.EstadosButaca;
 import ar.edu.um.programacion2.repository.ButacaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.service.ReporteService;
@@ -45,7 +46,7 @@ public class ReporteResource {
 	public List<Butaca> getButacasVendidasDeProyeccionBetween(@PathVariable Long id_proyeccion,
 															  @PathVariable LocalDate inicio, 
 															  @PathVariable LocalDate fin) {
-		return butacaRepository.findByfechaDeVentaBetweenAndProyeccionId(inicio, fin, id_proyeccion);
+		return butacaRepository.findByfechaDeVentaBetweenAndProyeccionIdAndEstadoEquals(inicio, fin, id_proyeccion, EstadosButaca.Vendida);
 	}
 
 	@GetMapping("/masvendidas/{inicio}/{fin}")
@@ -56,6 +57,6 @@ public class ReporteResource {
 
 	@GetMapping("/butacas_vendidas")
 	public List<Butaca> getButacasVendidasDeProyeccionesActivas() {
-		return butacaRepository.findByProyeccionEstadoTrue();
+		return butacaRepository.findByProyeccionEstadoTrueAndEstadoIs(EstadosButaca.Vendida);
 	}
 }

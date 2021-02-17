@@ -80,7 +80,8 @@ public class ButacaResource {
 		proyeccion = proyeccionRepository.findById(butaca.getProyeccion().getId()).get();
 		pelicula = proyeccion.getPelicula();
 		fechaProyeccion = LocalDate.ofInstant(proyeccion.getHora(), ZoneId.systemDefault());
-		if(!(pelicula.getFechaInicio().isBefore(fechaProyeccion) && pelicula.getFechaFin().isAfter(fechaProyeccion))) {
+		if(!(pelicula.getFechaInicio().isBefore(fechaProyeccion) && pelicula.getFechaFin().isAfter(fechaProyeccion)
+				|| pelicula.getFechaInicio().isEqual(fechaProyeccion) || pelicula.getFechaFin().isEqual(fechaProyeccion))) {
 			throw new BadRequestAlertException("Pelicula is not active", ENTITY_NAME, "non-activepelicula");
 		}
 		Butaca result = butacaService.save(butaca);

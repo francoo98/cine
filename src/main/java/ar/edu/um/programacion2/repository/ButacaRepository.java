@@ -2,6 +2,7 @@ package ar.edu.um.programacion2.repository;
 
 import ar.edu.um.programacion2.domain.Butaca;
 import ar.edu.um.programacion2.domain.Proyeccion;
+import ar.edu.um.programacion2.domain.enumeration.EstadosButaca;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -21,9 +22,9 @@ public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 
 	List<Butaca> findByfechaDeVentaBetween(LocalDate inicio, LocalDate fin);
 	
-	List<Butaca> findByfechaDeVentaBetweenAndProyeccionId(LocalDate inicio, LocalDate fin, Long id_proyeccion);
+	List<Butaca> findByfechaDeVentaBetweenAndProyeccionIdAndEstadoEquals(LocalDate inicio, LocalDate fin, Long id_proyeccion, EstadosButaca estado);
 	
-	List<Butaca> findByProyeccionEstadoTrue();
+	List<Butaca> findByProyeccionEstadoTrueAndEstadoIs(EstadosButaca estado);
 
 	List<Butaca> findByProyeccion(Proyeccion proyeccion);
 
