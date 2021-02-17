@@ -14,5 +14,7 @@
                                  referencedColumnNames="id"
                                  referencedTableName="proyeccion"/>
 
+       <addUniqueConstraint tableName="Butaca" columnNames="fila, asiento, proyeccion_id"/>
+
     </changeSet>
 </databaseChangeLog>
