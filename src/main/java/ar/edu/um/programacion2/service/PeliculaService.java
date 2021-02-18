@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.um.programacion2.domain.Pelicula;
@@ -16,11 +17,8 @@ import ar.edu.um.programacion2.service.dto.PeliculaDisponibilidadesDTO;
 @Service
 public class PeliculaService {
 
-	private final PeliculaRepository peliculaRespository;
-
-	public PeliculaService(PeliculaRepository peliculaRepository) {
-		this.peliculaRespository = peliculaRepository;
-	}
+	@Autowired
+	private PeliculaRepository peliculaRespository;
 
 	public PeliculaDisponibilidadesDTO findPeliculaAvailabilityBetween(Long id, LocalDate inicio, LocalDate fin)
 			throws NoSuchElementException {

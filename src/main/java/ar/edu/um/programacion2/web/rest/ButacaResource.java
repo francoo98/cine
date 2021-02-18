@@ -4,7 +4,6 @@ import ar.edu.um.programacion2.domain.Butaca;
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
 import ar.edu.um.programacion2.repository.ButacaRepository;
-import ar.edu.um.programacion2.repository.PeliculaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.service.ButacaService;
 import ar.edu.um.programacion2.web.rest.errors.BadRequestAlertException;
@@ -14,7 +13,6 @@ import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,16 +42,14 @@ public class ButacaResource {
 	
 	private final ButacaRepository butacaRepository;
 	private final ProyeccionRepository proyeccionRepository;
-	private final PeliculaRepository peliculaRepository;
 	
 	private final ButacaService butacaService;
 
 	public ButacaResource(ButacaRepository butacaRepository, ProyeccionRepository proyeccionRepository,
-						  ButacaService butacaService, PeliculaRepository peliculaRepository) {
+						  ButacaService butacaService) {
 		this.butacaRepository = butacaRepository;
 		this.proyeccionRepository = proyeccionRepository;
 		this.butacaService = butacaService;
-		this.peliculaRepository = peliculaRepository;
 	}
 
 	/**

@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.um.programacion2.domain.Butaca;
@@ -23,13 +24,10 @@ public class ProyeccionService {
 
 	private final Logger log = LoggerFactory.getLogger(ProyeccionService.class);
 	
-	private final ProyeccionRepository proyeccionRepository;
-	private final ButacaRepository butacaRepository;
-	
-	ProyeccionService(ProyeccionRepository proyeccionRepository, ButacaRepository butacaRepository) {
-		this.proyeccionRepository = proyeccionRepository;
-		this.butacaRepository = butacaRepository;
-	}
+	@Autowired
+	private ProyeccionRepository proyeccionRepository;
+	@Autowired
+	private ButacaRepository butacaRepository;
 	
 	public List<ProyeccionEstadoButacasDTO> getProyeccionDePelicula(Long peliculaID, LocalDate dia) {
 		List<ProyeccionEstadoButacasDTO> estados = new ArrayList<ProyeccionEstadoButacasDTO>();
@@ -59,6 +57,5 @@ public class ProyeccionService {
 			}
 		}
 		return estados;
-	}
-	
+	}	
 }
