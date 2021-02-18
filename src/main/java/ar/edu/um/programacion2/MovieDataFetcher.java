@@ -31,7 +31,7 @@ public class MovieDataFetcher implements CommandLineRunner {
 		try {
 			this.con = this.connect();
 			this.movies = this.getMovies();
-			this.savePeliculas();
+			this.saveMovies();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class MovieDataFetcher implements CommandLineRunner {
 		return con;
 	}
 	
-	private void savePeliculas() {
+	private void saveMovies() {
 		JSONObject peliculaJson = null;
 		Iterator<Object> i = this.movies.iterator();
 		while(i.hasNext()) {
