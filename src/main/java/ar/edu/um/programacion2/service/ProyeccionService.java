@@ -34,17 +34,18 @@ public class ProyeccionService {
 		Optional<List<Proyeccion>> proyecciones = proyeccionRepository.
 												  findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(
 												  peliculaID, dia);
-		List<Butaca> butacasOcupadas;
+		List<Butaca> butacasRegistradas;
 		List<ButacaEstadoDTO> estadosButacas = new ArrayList<ButacaEstadoDTO>();
 		Sala sala;
 		if(proyecciones.isPresent()) {
 			for(Proyeccion proyeccion : proyecciones.get()) {
 				sala = proyeccion.getSala();
-				butacasOcupadas = butacaRepository.findByProyeccion(proyeccion);
-				for(Butaca butaca : butacasOcupadas) {
+				butacasRegistradas = butacaRepository.findByProyeccion(proyeccion);
+				for(Butaca butaca : butacasRegistradas) {
 					estadosButacas.add(butaca.toButacaEstadoDTO());
 				}
 				
+				// Agregar butacas libres que no estan registradas
 				for(int fila = 1; fila < sala.getFilas(); fila++) {
 					for(int asiento = 1; asiento < sala.getAsientos(); asiento++) {
 						if(!this.butacaRepository.existsByProyeccionAndFilaAndAsiento(proyeccion, fila, asiento)) {
@@ -52,7 +53,6 @@ public class ProyeccionService {
 						}
 					}
 				}
-				
 				estados.add(new ProyeccionEstadoButacasDTO(proyeccion, estadosButacas));
 			}
 		}
