@@ -57,6 +57,6 @@ public class ReporteResource {
 
 	@GetMapping("/butacas_vendidas")
 	public List<Butaca> getButacasVendidasDeProyeccionesActivas() {
-		return butacaRepository.findByProyeccionEstadoTrueAndEstadoIs(EstadosButaca.Vendida);
+		return butacaRepository.findByPeliculaEstadoTrueAndEstadoIsVendida();
 	}
 }

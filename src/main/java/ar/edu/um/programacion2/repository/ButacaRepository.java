@@ -24,7 +24,8 @@ public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 	
 	List<Butaca> findByfechaDeVentaBetweenAndProyeccionIdAndEstadoEquals(LocalDate inicio, LocalDate fin, Long id_proyeccion, EstadosButaca estado);
 	
-	List<Butaca> findByProyeccionEstadoTrueAndEstadoIs(EstadosButaca estado);
+	@Query(value = "select b from Butaca b where estado = 'Vendida' and proyeccion.pelicula.estado = true")
+	List<Butaca> findByPeliculaEstadoTrueAndEstadoIsVendida();
 
 	List<Butaca> findByProyeccion(Proyeccion proyeccion);
 
