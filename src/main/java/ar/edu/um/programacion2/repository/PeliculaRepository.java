@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PeliculaRepository extends JpaRepository<Pelicula, Long> {
 	
-	List<Pelicula> findAllByFechaFinAfterAndFechaInicioBeforeAndEstadoTrue(LocalDate inicio, LocalDate fin);
+	List<Pelicula> findAllByFechaFinGreaterThanEqualAndFechaInicioLessThanEqualAndEstadoTrue(LocalDate inicio, LocalDate fin);
 
 }
