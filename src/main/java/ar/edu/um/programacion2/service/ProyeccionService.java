@@ -35,10 +35,10 @@ public class ProyeccionService {
 												  findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(
 												  peliculaID, dia);
 		List<Butaca> butacasRegistradas;
-		List<ButacaEstadoDTO> estadosButacas = new ArrayList<ButacaEstadoDTO>();
 		Sala sala;
 		if(proyecciones.isPresent()) {
 			for(Proyeccion proyeccion : proyecciones.get()) {
+				List<ButacaEstadoDTO> estadosButacas = new ArrayList<ButacaEstadoDTO>();
 				sala = proyeccion.getSala();
 				butacasRegistradas = butacaRepository.findByProyeccion(proyeccion);
 				for(Butaca butaca : butacasRegistradas) {

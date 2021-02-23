@@ -8,7 +8,6 @@ public class ProyeccionEstadoButacasDTO {
 	Proyeccion proyeccion;
 	List<ButacaEstadoDTO> butacas;
 	
-	
 	public ProyeccionEstadoButacasDTO(Proyeccion proyeccion, List<ButacaEstadoDTO> butacas) {
 		this.proyeccion = proyeccion;
 		this.butacas = butacas;
