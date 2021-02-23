@@ -39,7 +39,7 @@ public class ReporteResource {
 
 	@GetMapping("/butacas_vendidas/{inicio}/{fin}")
 	public List<Butaca> getButacasVendidasBetween(@PathVariable LocalDate inicio, @PathVariable LocalDate fin) {
-		return butacaRepository.findByfechaDeVentaBetween(inicio, fin);
+		return butacaRepository.findByfechaDeVentaBetweenAndEstadoIs(inicio, fin, EstadosButaca.Vendida);
 	}
 
 	@GetMapping("/butacas_vendidas/{id_proyeccion}/{inicio}/{fin}")

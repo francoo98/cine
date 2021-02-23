@@ -18,9 +18,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ButacaRepository extends JpaRepository<Butaca, Long> {
 	
-	int countButacaByProyeccion(Proyeccion proyeccion);
+	int countButacaByProyeccionAndEstado(Proyeccion proyeccion, EstadosButaca estadoButaca);
 
-	List<Butaca> findByfechaDeVentaBetween(LocalDate inicio, LocalDate fin);
+	List<Butaca> findByfechaDeVentaBetweenAndEstadoIs(LocalDate inicio, LocalDate fin, EstadosButaca estado);
 	
 	List<Butaca> findByfechaDeVentaBetweenAndProyeccionIdAndEstadoEquals(LocalDate inicio, LocalDate fin, Long id_proyeccion, EstadosButaca estado);
 	

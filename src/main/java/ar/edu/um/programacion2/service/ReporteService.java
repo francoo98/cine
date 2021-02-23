@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import ar.edu.um.programacion2.domain.Proyeccion;
+import ar.edu.um.programacion2.domain.enumeration.EstadosButaca;
 import ar.edu.um.programacion2.repository.ButacaRepository;
 import ar.edu.um.programacion2.repository.ProyeccionRepository;
 import ar.edu.um.programacion2.service.dto.ProyeccionButacasVendidasDTO;
@@ -34,7 +35,7 @@ public class ReporteService {
 		int butacasVendidas = 0;
 		if (proyecciones.size() > 0) {
 			for (Proyeccion pr : proyecciones) {
-				butacasVendidas = butacaRepository.countButacaByProyeccion(pr);
+				butacasVendidas = butacaRepository.countButacaByProyeccionAndEstado(pr, EstadosButaca.Vendida);
 				ProyeccionButacasVendidasDTO p = new ProyeccionButacasVendidasDTO(pr, butacasVendidas);
 				top5.add(p);
 			}

@@ -2,6 +2,7 @@ package ar.edu.um.programacion2.repository;
 
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.domain.Proyeccion;
+import ar.edu.um.programacion2.service.dto.ProyeccionButacasVendidasDTO;
 
 import org.springframework.data.domain.Pageable;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.*;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
@@ -32,9 +34,11 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 	@Query("select p from Proyeccion p where fechaInicio <= ?1 and fechaFin >= ?1")
 	List<Proyeccion> findAllByFechaInicioBeforeAndFechaFinAfterAndEstadoTrue(LocalDate hoy);
 
-	@Query("select p from Proyeccion p join Butaca b on b.proyeccion = p "
-		 + "where p.fechaInicio < ?2 and p.fechaFin > ?1 "
-		 + "group by b.proyeccion order by count(b) desc")
+	@Query(nativeQuery = true, 
+			value = "SELECT proyeccion.*, count(CASE WHEN butaca.estado = 'Vendida' THEN 1 END) as \"Butacas Vendidas\" " +
+					"FROM Proyeccion JOIN Butaca ON Proyeccion.id = Butaca.proyeccion_id " +
+					"WHERE ?1 <= fecha_inicio AND ?2 >= fecha_fin " +
+					"GROUP BY(proyeccion.id) ORDER BY \"Butacas Vendidas\" DESC")
 	Page<Proyeccion> masVendidas(LocalDate inicio, LocalDate fin, Pageable pageable);
 
 	@Query("select p from Proyeccion p where pelicula.id = ?1 and ?2 between fechaInicio and fechaFin and estado = True")
