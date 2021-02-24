@@ -11,28 +11,40 @@ import java.util.Iterator;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import ar.edu.um.programacion2.domain.Pelicula;
 import ar.edu.um.programacion2.repository.PeliculaRepository;
 
+@EnableScheduling
 @Component
 public class MovieDataFetcher implements CommandLineRunner {
 
+	private final Logger log = LoggerFactory.getLogger(MovieDataFetcher.class);
+	
 	private HttpURLConnection con;
 	private JSONArray movies;
 	@Autowired
 	private PeliculaRepository peliculaRepository;
 	
-	
 	public void run(String... args) throws Exception {
+		this.run();
+	}
+	
+	@Scheduled(cron = "0 0 9 * * ?")
+	private void run() {
+		log.debug("run() method in MovieDataFetcher was called.");
 		try {
 			this.con = this.connect();
 			this.movies = this.getMovies();
 			this.saveMovies();
-			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -81,5 +93,4 @@ public class MovieDataFetcher implements CommandLineRunner {
 		}
 
 	}
-	
 }
