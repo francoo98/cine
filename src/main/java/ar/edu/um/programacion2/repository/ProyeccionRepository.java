@@ -33,13 +33,12 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 	
 	@Query("select p from Proyeccion p where fechaInicio <= ?1 and fechaFin >= ?1")
 	List<Proyeccion> findAllByFechaInicioBeforeAndFechaFinAfterAndEstadoTrue(LocalDate hoy);
-
 	@Query(nativeQuery = true, 
-			value = "SELECT proyeccion.*, count(CASE WHEN butaca.estado = 'Vendida' THEN 1 END) as \"Butacas Vendidas\" " +
+			value = "SELECT proyeccion.*, count(CASE WHEN butaca.estado = 'Vendida' THEN 1 END) as ButacasVendidas " +
 					"FROM Proyeccion JOIN Butaca ON Proyeccion.id = Butaca.proyeccion_id " +
-					"WHERE ?1 <= fecha_inicio AND ?2 >= fecha_fin " +
-					"GROUP BY(proyeccion.id) ORDER BY \"Butacas Vendidas\" DESC")
-	Page<Proyeccion> masVendidas(LocalDate inicio, LocalDate fin, Pageable pageable);
+					"WHERE fecha_inicio <= :fin AND fecha_fin >= :inicio " +
+					"GROUP BY proyeccion.id ORDER BY ButacasVendidas DESC LIMIT 5")
+	Page<Proyeccion> masVendidas(@Param(value = "inicio") LocalDate inicio, @Param(value = "fin") LocalDate fin, Pageable pageable);
 
 	@Query("select p from Proyeccion p where pelicula.id = ?1 and ?2 between fechaInicio and fechaFin and estado = True")
 	Optional<List<Proyeccion>> findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(Long pelicula_id,
