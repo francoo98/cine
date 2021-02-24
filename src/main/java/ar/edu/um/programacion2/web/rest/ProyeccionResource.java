@@ -78,6 +78,11 @@ public class ProyeccionResource {
 		if(!peliculaRepository.existsById(proyeccion.getPelicula().getId())) {
 			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Pelicula non-existent");
 		}
+		Pelicula pelicula = peliculaRepository.findById(proyeccion.getPelicula().getId()).get();
+		if(proyeccion.getFechaInicio().isBefore(pelicula.getFechaInicio()) || 
+			proyeccion.getFechaFin().isAfter(pelicula.getFechaFin())) {
+			throw new BadRequestAlertException("Error in request", ENTITY_NAME, "Proyeccion dates aren't valid");
+		}
 		Proyeccion result = proyeccionRepository.save(proyeccion);
 		return ResponseEntity
 				.created(new URI("/api/proyeccions/" + result.getId())).headers(HeaderUtil
