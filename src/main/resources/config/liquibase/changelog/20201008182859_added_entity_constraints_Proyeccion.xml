@@ -20,5 +20,7 @@
                                  referencedColumnNames="id"
                                  referencedTableName="sala"/>
 
+	<addUniqueConstraint tableName="Proyeccion" columnNames="fecha_inicio, fecha_fin, pelicula_id, sala_id"/>
+
     </changeSet>
 </databaseChangeLog>
