@@ -29,8 +29,8 @@ public class ButacaService {
 	public Butaca save(Butaca butaca) throws BadRequestAlertException {
 		Proyeccion proyeccion = proyeccionRepository.findById(butaca.getProyeccion().getId()).get();
 		Pelicula pelicula = proyeccion.getPelicula();
-		if(butaca.getFechaDeVenta().isEqual(LocalDate.ofInstant(proyeccion.getHora(), ZoneId.systemDefault()))) {
-			throw new BadRequestAlertException("Can't make this today", ENTITY_NAME, "BadDate");
+		if(!butaca.getFechaDeVenta().isBefore(LocalDate.ofInstant(proyeccion.getHora(), ZoneId.systemDefault()))) {
+			throw new BadRequestAlertException("Butacas must be posted before Proyeccion.hora", ENTITY_NAME, "BadDate");
 		}
 		if(!pelicula.isEstado()) {
 			throw new BadRequestAlertException("Pelicula is not active", ENTITY_NAME, "BadPelicula");
