@@ -44,4 +44,8 @@ public interface ProyeccionRepository extends JpaRepository<Proyeccion, Long> {
 	Optional<List<Proyeccion>> findProyeccionsByPeliculaIdAndFechaInicioBeforeAndFechaFinAfter(Long pelicula_id,
 																						 	   LocalDate fecha);
 
+	List<Proyeccion> findProyeccionsByPeliculaAndFechaFinGreaterThanEqualAndFechaInicioLessThanEqualAndEstadoTrue(Pelicula p, 
+			LocalDate inicio,
+			LocalDate fin);
+
 }
