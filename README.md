@@ -2,6 +2,8 @@
 
 This application was generated using JHipster 6.9.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.9.1](https://www.jhipster.tech/documentation-archive/v6.9.1).
 
+REST API to manage a cinema. It implements CRUD operation on movies, proyections, theater and theater seats
+
 ## Entities
 
 1. Pelicula - movie
