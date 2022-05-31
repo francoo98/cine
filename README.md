@@ -10,7 +10,7 @@ This application was generated using JHipster 6.9.1, you can find documentation 
 5. Butaca - sold theater seat
 
 ## Reportes
-The api has an endpoint for reports.
+The api has an endpoint to get reports.
 1. GET /reportes/butacas_vendidas/{inicio}/{fin} - returns all the Butacas sold between dates {inicio} and {fin}
 2. GET /reportes/butacas_vendidas/{id_proyeccion}/{inicio}/{fin} - returns all the Butacas sold between dates {inicio} and {fin} of a given Proyeccion {id_proyeccion}
 3. GET /reportes/masvendidas/{inicio}/{fin} - returns a top 5 of the Proyeccion with more Butacas sold
